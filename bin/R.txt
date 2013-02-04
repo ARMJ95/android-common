@@ -1,1 +1,0 @@
-int raw configuration 0x7f020000
