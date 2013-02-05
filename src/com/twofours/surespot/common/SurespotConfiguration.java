@@ -25,9 +25,8 @@ public class SurespotConfiguration {
 			mConfigProperties = properties;
 			mEnv = Integer.parseInt((String) properties.get("environment"));
 			mBaseUrl = (String) properties.get("baseUrl");
-			
-		
-
+			SurespotLog.v(TAG, "env: " + SurespotConfiguration.getEnvironment());
+			SurespotLog.v(TAG, "baseUrl: " + SurespotConfiguration.getBaseUrl());		
 		}
 		catch (Exception e) {
 			SurespotLog.e(TAG, "could not load configuration properties", e);

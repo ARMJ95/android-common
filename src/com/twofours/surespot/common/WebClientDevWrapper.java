@@ -12,6 +12,7 @@ import javax.net.ssl.X509TrustManager;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import ch.boye.httpclientandroidlib.client.HttpClient;
 import ch.boye.httpclientandroidlib.conn.ClientConnectionManager;
@@ -22,21 +23,22 @@ import ch.boye.httpclientandroidlib.impl.client.AbstractHttpClient;
 import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
 
 public class WebClientDevWrapper {
-	private static final String TAG = null;
+	private static final String TAG = "WebClientDevWrapper";
 	private static SSLContext mSSLContext;
 	private static SSLContext mWebSocketSSLContext;
 
 	public static AbstractHttpClient wrapClient(AbstractHttpClient base) {
 		// wrap client so we can use self signed cert in dev
 
-		SSLSocketFactory ssf = new SSLSocketFactory(getSSLContext());
+		SSLSocketFactory ssf = new SSLSocketFactory(getSSLContext());		
 		//TODO Compile out for prod
-	//	if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
+		if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
+			
+			ssf.setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
+		}
+		else {
 			ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-//		}
-//		else {
-//			ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-//		}
+		}
 		ClientConnectionManager ccm = base.getConnectionManager();
 		SchemeRegistry sr = ccm.getSchemeRegistry();
 		sr.register(new Scheme("https", ssf, 443));
@@ -44,24 +46,11 @@ public class WebClientDevWrapper {
 	}
 	
 	public static SSLContext getWebSocketSSLContext() {
-		//if (mWebSocketSSLContext == null) {
+		if (mWebSocketSSLContext == null) {
 			try {
 
 				mWebSocketSSLContext = SSLContext.getInstance("SSL","HarmonyJSSE");
 				if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
-
-//					final KeyStore keyStore = KeyStore.getInstance("BKS");
-//					keyStore.load(SurespotConfiguration.getContext().getResources().openRawResource(R.raw.stage_keystore),
-//							"4aep*321".toCharArray());
-//
-//					final KeyManagerFactory keyManager = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-//					keyManager.init(keyStore, null);
-//
-//					final TrustManagerFactory trustFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-//					trustFactory.init(keyStore);
-//
-//					mWebSocketSSLContext.init(keyManager.getKeyManagers(), trustFactory.getTrustManagers(), null);
-
 					mWebSocketSSLContext.init(null, null, null);
 				}
 				else {
@@ -91,30 +80,17 @@ public class WebClientDevWrapper {
 				SurespotLog.w(TAG, "could not initialize websocket sslcontext", ex);
 				return null;
 			}
-		//}
+		}
 		return mWebSocketSSLContext;
 	}
 
 
 	private static SSLContext getSSLContext() {
-	//	if (mSSLContext == null) {
+		if (mSSLContext == null) {
 			try {
 
 				mSSLContext = SSLContext.getInstance("TLS");
 				if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
-
-//					final KeyStore keyStore = KeyStore.getInstance("BKS");
-//					keyStore.load(SurespotConfiguration.getContext().getResources().openRawResource(R.raw.stage_keystore),
-//							"wanker".toCharArray());
-//
-//					final KeyManagerFactory keyManager = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-//					keyManager.init(keyStore, null);
-//
-//					final TrustManagerFactory trustFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-//					trustFactory.init(keyStore);
-//
-//					mSSLContext.init(keyManager.getKeyManagers(), trustFactory.getTrustManagers(), null);
-
 					mSSLContext.init(null, null, null);
 				}
 				else {
@@ -144,7 +120,7 @@ public class WebClientDevWrapper {
 				SurespotLog.w(TAG, "could not initialize sslcontext", ex);
 				return null;
 			}
-	//	}
+		}
 		return mSSLContext;
 	}
 
