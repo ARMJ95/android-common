@@ -12,12 +12,14 @@ import javax.net.ssl.X509TrustManager;
 
 import android.app.Application;
 import android.content.Context;
+import android.net.SSLCertificateSocketFactory;
 import android.util.Log;
 
 import ch.boye.httpclientandroidlib.client.HttpClient;
 import ch.boye.httpclientandroidlib.conn.ClientConnectionManager;
 import ch.boye.httpclientandroidlib.conn.scheme.Scheme;
 import ch.boye.httpclientandroidlib.conn.scheme.SchemeRegistry;
+import ch.boye.httpclientandroidlib.conn.scheme.SocketFactory;
 import ch.boye.httpclientandroidlib.conn.ssl.SSLSocketFactory;
 import ch.boye.httpclientandroidlib.impl.client.AbstractHttpClient;
 import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
@@ -25,15 +27,15 @@ import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
 public class WebClientDevWrapper {
 	private static final String TAG = "WebClientDevWrapper";
 	private static SSLContext mSSLContext;
-	private static SSLContext mWebSocketSSLContext;
+	private static SocketFactory mWebSocketFactory;
 
 	public static AbstractHttpClient wrapClient(AbstractHttpClient base) {
 		// wrap client so we can use self signed cert in dev
 
-		SSLSocketFactory ssf = new SSLSocketFactory(getSSLContext());		
-		//TODO Compile out for prod
+		SSLSocketFactory ssf = new SSLSocketFactory(getSSLContext());
+		// TODO Compile out for prod
 		if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
-			
+
 			ssf.setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
 		}
 		else {
@@ -44,46 +46,17 @@ public class WebClientDevWrapper {
 		sr.register(new Scheme("https", ssf, 443));
 		return new DefaultHttpClient(ccm, base.getParams());
 	}
-	
-	public static SSLContext getWebSocketSSLContext() {
-		if (mWebSocketSSLContext == null) {
-			try {
 
-				mWebSocketSSLContext = SSLContext.getInstance("SSL","HarmonyJSSE");
-				if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
-					mWebSocketSSLContext.init(null, null, null);
-				}
-				else {
+	public static javax.net.SocketFactory getWebSocketFactory() {
 
-					X509TrustManager tm = new X509TrustManager() {
-
-						public X509Certificate[] getAcceptedIssuers() {
-							return null;
-						}
-
-						@Override
-						public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-							// TODO Auto-generated method stub
-
-						}
-
-						@Override
-						public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-							// TODO Auto-generated method stub
-
-						}
-					};
-					mWebSocketSSLContext.init(null, new TrustManager[] { tm }, null);
-				}
-			}
-			catch (Exception ex) {
-				SurespotLog.w(TAG, "could not initialize websocket sslcontext", ex);
-				return null;
-			}
+		if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
+			return SSLCertificateSocketFactory.getDefault();
 		}
-		return mWebSocketSSLContext;
-	}
+		else {
 
+			return SSLCertificateSocketFactory.getInsecure(0, null);
+		}
+	}
 
 	private static SSLContext getSSLContext() {
 		if (mSSLContext == null) {
