@@ -2,6 +2,7 @@ package com.twofours.surespot.common;
 
 import java.io.InputStream;
 import java.util.Properties;
+
 import android.content.Context;
 
 public class SurespotConfiguration {

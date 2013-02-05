@@ -1,25 +1,16 @@
 package com.twofours.surespot.common;
 
-import java.security.KeyStore;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
-import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
-import android.app.Application;
-import android.content.Context;
 import android.net.SSLCertificateSocketFactory;
-import android.util.Log;
-
-import ch.boye.httpclientandroidlib.client.HttpClient;
 import ch.boye.httpclientandroidlib.conn.ClientConnectionManager;
 import ch.boye.httpclientandroidlib.conn.scheme.Scheme;
 import ch.boye.httpclientandroidlib.conn.scheme.SchemeRegistry;
-import ch.boye.httpclientandroidlib.conn.scheme.SocketFactory;
 import ch.boye.httpclientandroidlib.conn.ssl.SSLSocketFactory;
 import ch.boye.httpclientandroidlib.impl.client.AbstractHttpClient;
 import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
@@ -27,7 +18,6 @@ import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
 public class WebClientDevWrapper {
 	private static final String TAG = "WebClientDevWrapper";
 	private static SSLContext mSSLContext;
-	private static SocketFactory mWebSocketFactory;
 
 	public static AbstractHttpClient wrapClient(AbstractHttpClient base) {
 		// wrap client so we can use self signed cert in dev
