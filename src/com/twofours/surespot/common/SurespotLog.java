@@ -12,7 +12,7 @@ public class SurespotLog {
 	}
 
 	public static void w(String tag, String msg, Throwable tr) {
-		Log.w(tag, msg, tr);
+		Log.w(tag, msg +", " + tr.getMessage());
 		// ACRA.getErrorReporter().handleException(tr);
 	}
 
@@ -53,7 +53,8 @@ public class SurespotLog {
 	}
 
 	public static void v(String tag, String msg, Throwable tr) {
-		Log.v(tag, msg, tr);
+		Log.v(tag, msg +", " + tr.getMessage());
+		//Log.v(tag, msg, tr);
 	}
 
 }
