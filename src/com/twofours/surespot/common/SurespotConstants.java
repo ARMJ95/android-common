@@ -34,10 +34,22 @@ public class SurespotConstants {
 		public final static String PREFS_LAST_VIEWED_MESSAGE_IDS = "last_message_ids";
 		public static final String LAST_CHAT = "last_chat";
 		public static final String UNSENT_MESSAGES = "unsentmessages";
+		public static final String CURRENT_USER = "current_user";
 	}
 
 	public class MimeTypes {
 		public final static String TEXT = "text/plain";
 		public final static String IMAGE = "image/";
+	}
+	
+	public class FileLocations {
+		public final static String HTTP_CACHE = "http";
+		public final static String IDENTITIES = "identities";
+	}
+	
+	public class IntentRequestCodes {
+		public final static int NEW_MESSAGE_NOTIFICATION = 0;
+		public final static int INVITE_NOTIFICATION = 1;
+		public final static int FOREGROUND_NOTIFICATION = 2;
 	}
 }

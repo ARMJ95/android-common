@@ -13,13 +13,19 @@ import java.util.Iterator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
-
 
 public class Utils {
 	private static Toast mToast;
@@ -80,8 +86,6 @@ public class Utils {
 		return Base64.decode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
 	}
 
-
-
 	public static String makePagerFragmentName(int viewId, long id) {
 		return "android:switcher:" + viewId + ":" + id;
 	}
@@ -94,6 +98,17 @@ public class Utils {
 		mToast.setText(toast);
 		mToast.show();
 	}
+	
+
+	public static void makeLongToast(Context context, String toast) {
+		if (mToast == null) {
+			mToast = Toast.makeText(context, toast, Toast.LENGTH_LONG);
+		}
+
+		mToast.setText(toast);
+		mToast.show();
+	}
+
 
 	public static String getSharedPrefsString(Context context, String key) {
 		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE,
@@ -151,7 +166,6 @@ public class Utils {
 
 	}
 
-	
 	public String md5(String s) {
 		try {
 			// Create MD5 Hash
@@ -170,5 +184,64 @@ public class Utils {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	/**
+	 * Configure the title bar the way we want it. Would be nice if sherlock would give us an interface.
+	 * 
+	 * @param activity
+	 * @param leftText
+	 * @param rightText
+	 */
+	public static void configureActionBar(SherlockFragmentActivity activity, String leftText, String rightText, boolean home) {
+		final ActionBar actionBar = activity.getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(home);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		View customNav = LayoutInflater.from(activity).inflate(R.layout.actionbar_title, null);
+		actionBar.setCustomView(customNav);
+		setActionBarTitles(activity, leftText, rightText);
+
+	}
+
+	public static void setActionBarTitles(SherlockFragmentActivity activity, String leftText, String rightText) {
+		TextView navView = (TextView) activity.findViewById(R.id.nav);
+		TextView userView = (TextView) activity.findViewById(R.id.user);
+		navView.setText(leftText);
+		userView.setText(rightText);
+	}
+
+	public static void configureActionBar(SherlockActivity activity, String leftText, String rightText, boolean home) {
+		final ActionBar actionBar = activity.getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(home);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		View customNav = LayoutInflater.from(activity).inflate(R.layout.actionbar_title, null);
+		actionBar.setCustomView(customNav);
+		setActionBarTitles(activity, leftText, rightText);
+	}
+
+	public static void setActionBarTitles(SherlockActivity activity, String leftText, String rightText) {
+		TextView navView = (TextView) activity.findViewById(R.id.nav);
+		TextView userView = (TextView) activity.findViewById(R.id.user);
+		navView.setText(leftText);
+		userView.setText(rightText);
+	}
+
+	public static void configureActionBar(SherlockPreferenceActivity activity, String leftText, String rightText, boolean home) {
+		final ActionBar actionBar = activity.getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(home);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		View customNav = LayoutInflater.from(activity).inflate(R.layout.actionbar_title, null);
+		actionBar.setCustomView(customNav);
+		setActionBarTitles(activity, leftText, rightText);
+	}
+
+	public static void setActionBarTitles(SherlockPreferenceActivity activity, String leftText, String rightText) {
+		TextView navView = (TextView) activity.findViewById(R.id.nav);
+		TextView userView = (TextView) activity.findViewById(R.id.user);
+		navView.setText(leftText);
+		userView.setText(rightText);
 	}
 }
