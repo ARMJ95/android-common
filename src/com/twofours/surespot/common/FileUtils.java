@@ -86,9 +86,12 @@ public class FileUtils {
 
 	public static boolean ensureDir(String dir) {
 		File file = new File(dir);
+		return ensureDir(file);		
+	}
+	
+	public static boolean ensureDir(File file) {		
 		file.mkdirs();
 		return file.isDirectory();
-
 	}
 	
 	public static File getIdentityExportDir() {

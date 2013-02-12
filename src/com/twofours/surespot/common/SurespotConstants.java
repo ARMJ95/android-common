@@ -30,11 +30,8 @@ public class SurespotConstants {
 		public final static String PREFS_FILE = "surespot_preferences";
 		public final static String GCM_ID_RECEIVED = "gcm_id_received";
 		public final static String GCM_ID_SENT = "gcm_id_sent";
-		public final static String PREFS_ACTIVE_CHATS = "active_chats";
-		public final static String PREFS_LAST_VIEWED_MESSAGE_IDS = "last_message_ids";
-		public static final String LAST_CHAT = "last_chat";
-		public static final String UNSENT_MESSAGES = "unsentmessages";
-		public static final String CURRENT_USER = "current_user";
+		public static final String LAST_USER = "last_user";
+		public static final String LAST_CHAT = "last_chat";				
 	}
 
 	public class MimeTypes {

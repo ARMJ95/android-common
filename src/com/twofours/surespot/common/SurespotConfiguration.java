@@ -15,7 +15,7 @@ public class SurespotConfiguration {
 	private static Properties mConfigProperties;
 	private static int mEnv;
 	private static String mBaseUrl;
-	private static Context mContext;
+	
 
 	public static void LoadConfigProperties(Context context) {
 		// Read from the /res/raw directory
@@ -47,11 +47,7 @@ public class SurespotConfiguration {
 		return mBaseUrl;		
 	}
 
-	public static Context getContext() {
-		return mContext;
-	}
+	
 
-	public static void setContext(Context context) {
-		SurespotConfiguration.mContext = context;
-	}
+
 }
