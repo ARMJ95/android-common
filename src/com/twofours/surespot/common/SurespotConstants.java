@@ -10,15 +10,26 @@ public class SurespotConstants {
 		public static final String INVITE_NOTIFICATION = "invite_notification";
 	}
 
+	public class NotificationTags {
+		public static final String MESSAGE = "message";
+		public static final String INVITE_REQUEST = "inviteRequest";
+		public static final String INVITE_RESPONSE = "inviteRequest";
+	}
+	
 	public class ExtraNames {
 		public static final String NAME = "notification_data";
 		public static final String FRIEND_ADDED = "friend_added_data";
 		public static final String MESSAGE = "message_data";
 		public static final String INVITE_RESPONSE = "friend_invite_response";
-		public static final String SHOW_CHAT_NAME = "show_chat_name";
+		//public static final String SHOW_CHAT_NAME = "show_chat_name";
+		public static final String MESSAGE_FROM = "message_from";
+		public static final String MESSAGE_TO = "message_to";
+		
 		public static final String GCM_CHANGED = "gcm_changed";
 		public static final String CONNECTED = "connected";
 		public static final String IMAGE_MESSAGE = "image_message";
+		public static final String NOTIFICATION_TYPE = "notification_type";
+		
 	}
 
 	public final static int MAX_IMAGE_DIMENSION = 480;
@@ -46,7 +57,8 @@ public class SurespotConstants {
 	
 	public class IntentRequestCodes {
 		public final static int NEW_MESSAGE_NOTIFICATION = 0;
-		public final static int INVITE_NOTIFICATION = 1;
-		public final static int FOREGROUND_NOTIFICATION = 2;
+		public final static int INVITE_REQUEST_NOTIFICATION = 1;
+		public final static int INVITE_RESPONSE_NOTIFICATION = 2;
+		public final static int FOREGROUND_NOTIFICATION = 3;
 	}
 }
