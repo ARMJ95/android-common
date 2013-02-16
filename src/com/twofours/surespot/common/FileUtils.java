@@ -9,13 +9,13 @@ import android.os.Environment;
 
 public class FileUtils {
 	private static final String STATE_DIR = "state";
-	private final static String HTTP_CACHE = "http";
+	private final static String HTTP_BASE = "http_";
 	private final static String IDENTITIES_DIR = "identities";
 	private static final String TAG = "FileUtils";
 
-	public static File getHttpCacheDir(Context context) {
+	public static File getHttpCacheDir(Context context, String cacheName) {
 
-		return getCacheDir(context, HTTP_CACHE);
+		return getCacheDir(context, HTTP_BASE + cacheName);
 	}
 
 	private static File getCacheDir(Context context, String unique) {
