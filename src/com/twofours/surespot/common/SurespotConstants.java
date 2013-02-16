@@ -55,5 +55,8 @@ public class SurespotConstants {
 		public final static int INVITE_REQUEST_NOTIFICATION = 1;
 		public final static int INVITE_RESPONSE_NOTIFICATION = 2;
 		public final static int FOREGROUND_NOTIFICATION = 3;
+		public final static int REQUEST_EXISTING_IMAGE = 4;
+		public final static int REQUEST_SELECT_IMAGE = 5;
+		public final static int REQUEST_SETTINGS = 6;
 	}
 }
