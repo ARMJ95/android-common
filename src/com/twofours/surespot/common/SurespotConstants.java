@@ -50,11 +50,6 @@ public class SurespotConstants {
 		public final static String IMAGE = "image/";
 	}
 	
-	public class FileLocations {
-		public final static String HTTP_CACHE = "http";
-		public final static String IDENTITIES = "identities";
-	}
-	
 	public class IntentRequestCodes {
 		public final static int NEW_MESSAGE_NOTIFICATION = 0;
 		public final static int INVITE_REQUEST_NOTIFICATION = 1;
