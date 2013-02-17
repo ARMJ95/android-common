@@ -19,7 +19,7 @@ public class WebClientDevWrapper {
 	private static final String TAG = "WebClientDevWrapper";
 	private static SSLContext mSSLContext;
 
-	public static AbstractHttpClient wrapClient(AbstractHttpClient base) {
+	public static void wrapClient(AbstractHttpClient base) {
 		// wrap client so we can use self signed cert in dev
 
 		SSLSocketFactory ssf = new SSLSocketFactory(getSSLContext());
@@ -34,7 +34,6 @@ public class WebClientDevWrapper {
 		ClientConnectionManager ccm = base.getConnectionManager();
 		SchemeRegistry sr = ccm.getSchemeRegistry();
 		sr.register(new Scheme("https", ssf, 443));
-		return new DefaultHttpClient(ccm, base.getParams());
 	}
 
 	public static javax.net.SocketFactory getWebSocketFactory() {

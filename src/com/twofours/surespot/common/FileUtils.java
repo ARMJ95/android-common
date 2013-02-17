@@ -68,4 +68,11 @@ public class FileUtils {
 	public static String getStateDir(Context context) {
 		return context.getFilesDir().getPath() + File.separator + STATE_DIR;
 	}
+	
+	public static void wipeImageCaptureDir(Context context) {
+		File dir = getImageCaptureDir(context);
+		for (File file : dir.listFiles()) {
+			file.delete();
+		}
+	}
 };

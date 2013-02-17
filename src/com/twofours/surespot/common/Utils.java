@@ -9,13 +9,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -243,5 +246,19 @@ public class Utils {
 		TextView userView = (TextView) activity.findViewById(R.id.user);
 		navView.setText(leftText);
 		userView.setText(rightText);
+	}
+	
+	
+	public static void logIntent(Intent intent) {
+		String action = intent.getAction();
+		String type = intent.getType();
+		Bundle extras = intent.getExtras();
+		Set<String> categories = intent.getCategories();
+		
+		SurespotLog.v(TAG, "Intent action: " + action);
+		SurespotLog.v(TAG, "Intent type: " + type);
+		SurespotLog.v(TAG, "Intent categories: " + (categories == null ? "null" : categories.toString()));
+		SurespotLog.v(TAG, "Extras: " + (extras == null ? "null" : extras.toString()));
+
 	}
 }
