@@ -13,7 +13,6 @@ import ch.boye.httpclientandroidlib.conn.scheme.Scheme;
 import ch.boye.httpclientandroidlib.conn.scheme.SchemeRegistry;
 import ch.boye.httpclientandroidlib.conn.ssl.SSLSocketFactory;
 import ch.boye.httpclientandroidlib.impl.client.AbstractHttpClient;
-import ch.boye.httpclientandroidlib.impl.client.DefaultHttpClient;
 
 public class WebClientDevWrapper {
 	private static final String TAG = "WebClientDevWrapper";

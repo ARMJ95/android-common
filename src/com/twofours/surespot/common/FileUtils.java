@@ -2,9 +2,7 @@ package com.twofours.surespot.common;
 
 import java.io.File;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.os.Environment;
 
 public class FileUtils {
