@@ -249,16 +249,16 @@ public class Utils {
 	}
 	
 	
-	public static void logIntent(Intent intent) {
+	public static void logIntent(String tag,Intent intent) {
 		String action = intent.getAction();
 		String type = intent.getType();
 		Bundle extras = intent.getExtras();
 		Set<String> categories = intent.getCategories();
 		
-		SurespotLog.v(TAG, "Intent action: " + action);
-		SurespotLog.v(TAG, "Intent type: " + type);
-		SurespotLog.v(TAG, "Intent categories: " + (categories == null ? "null" : categories.toString()));
-		SurespotLog.v(TAG, "Extras: " + (extras == null ? "null" : extras.toString()));
+		SurespotLog.v(tag, "Intent action: " + action);
+		SurespotLog.v(tag, "Intent type: " + type);
+		SurespotLog.v(tag, "Intent categories: " + (categories == null ? "null" : categories.toString()));
+		SurespotLog.v(tag, "Extras: " + (extras == null ? "null" : extras.toString()));
 
 	}
 }
