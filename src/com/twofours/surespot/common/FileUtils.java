@@ -7,13 +7,13 @@ import android.os.Environment;
 
 public class FileUtils {
 	private static final String STATE_DIR = "state";
-	private final static String HTTP_BASE = "http_";
+	private final static String HTTP = "http";
 	private final static String IDENTITIES_DIR = "identities";
 	private static final String TAG = "FileUtils";
 
-	public static File getHttpCacheDir(Context context, String cacheName) {
+	public static File getHttpCacheDir(Context context) {
 
-		return getCacheDir(context, HTTP_BASE + cacheName);
+		return getCacheDir(context, HTTP);
 	}
 
 	private static File getCacheDir(Context context, String unique) {
@@ -24,9 +24,13 @@ public class FileUtils {
 
 		// see if we can write to the "external" storage
 		if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED || !Environment.isExternalStorageRemovable()) {
-			String cacheDir = context.getExternalCacheDir().getPath() + File.separator + unique;
-			if (ensureDir(cacheDir)) {
-				cachePath = cacheDir;
+			File fCacheDir = context.getExternalCacheDir();			
+			if (fCacheDir != null) {
+				String cacheDir = fCacheDir.getPath() + File.separator + unique;
+
+				if (ensureDir(cacheDir)) {
+					cachePath = cacheDir;
+				}
 			}
 		}
 
@@ -34,7 +38,7 @@ public class FileUtils {
 			cachePath = context.getCacheDir().getPath() + File.separator + unique;
 		}
 
-//		SurespotLog.w(TAG,"cachePath", new Exception(cachePath));
+		// SurespotLog.w(TAG,"cachePath", new Exception(cachePath));
 		return new File(cachePath);
 
 	}
@@ -66,7 +70,7 @@ public class FileUtils {
 	public static String getStateDir(Context context) {
 		return context.getFilesDir().getPath() + File.separator + STATE_DIR;
 	}
-	
+
 	public static void wipeImageCaptureDir(Context context) {
 		File dir = getImageCaptureDir(context);
 		for (File file : dir.listFiles()) {
