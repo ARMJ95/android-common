@@ -8,8 +8,8 @@ public class SurespotConstants {
 			  "MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBBpDN/3pyASvHhkY5eb7SEGqN0BkU\n" +
 			  "rE+XR4YPDuA84B69n7LFxXtQwf+iQFpaKTskp3TLV2DSB0RGAUAbXxGOHPUAntbw\n" +
 			  "3tfnOP8ti7L6jRuGdTJkzy86k5hrlb010OUS7dSHzLlfKxIuj7mmvtHvqfEWOBhL\n" +
-			  "O34yFdvRBoN0+KvLvWo=" + 
-			  "\n-----END PUBLIC KEY-----\n";
+			  "O34yFdvRBoN0+KvLvWo=\n" + 
+			  "-----END PUBLIC KEY-----";
 			
 
 	public class IntentFilters {
