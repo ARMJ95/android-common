@@ -4,10 +4,13 @@ package com.twofours.surespot.common;
 public class SurespotConstants {
 
 	public static final String SERVER_PUBLIC_KEY = 
-			  "MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBBpDN/3pyASvHhkY5eb7SEGqN0BkU\r\n"
-			+ "rE+XR4YPDuA84B69n7LFxXtQwf+iQFpaKTskp3TLV2DSB0RGAUAbXxGOHPUAntbw\r\n"
-			+ "3tfnOP8ti7L6jRuGdTJkzy86k5hrlb010OUS7dSHzLlfKxIuj7mmvtHvqfEWOBhL\r\n" + 
-			  "O34yFdvRBoN0+KvLvWo=";
+			  "-----BEGIN PUBLIC KEY-----\n" +
+			  "MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBBpDN/3pyASvHhkY5eb7SEGqN0BkU\n" +
+			  "rE+XR4YPDuA84B69n7LFxXtQwf+iQFpaKTskp3TLV2DSB0RGAUAbXxGOHPUAntbw\n" +
+			  "3tfnOP8ti7L6jRuGdTJkzy86k5hrlb010OUS7dSHzLlfKxIuj7mmvtHvqfEWOBhL\n" +
+			  "O34yFdvRBoN0+KvLvWo=" + 
+			  "\n-----END PUBLIC KEY-----\n";
+			
 
 	public class IntentFilters {
 		public static final String INVITE_REQUEST = "invite_request_intent";
