@@ -3,13 +3,22 @@ package com.twofours.surespot.common;
 
 public class SurespotConstants {
 
-	public static final String SERVER_PUBLIC_KEY = 
+	private static final String SERVER_PUBLIC_KEY_DEV = 
 			  "-----BEGIN PUBLIC KEY-----\n" +
 			  "MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBBpDN/3pyASvHhkY5eb7SEGqN0BkU\n" +
 			  "rE+XR4YPDuA84B69n7LFxXtQwf+iQFpaKTskp3TLV2DSB0RGAUAbXxGOHPUAntbw\n" +
 			  "3tfnOP8ti7L6jRuGdTJkzy86k5hrlb010OUS7dSHzLlfKxIuj7mmvtHvqfEWOBhL\n" +
 			  "O34yFdvRBoN0+KvLvWo=\n" + 
 			  "-----END PUBLIC KEY-----";
+	private static final String SERVER_PUBLIC_KEY_PROD =
+	"-----BEGIN PUBLIC KEY-----\n" + 
+	"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBHYBSUCgPnd4Fmj8Zq4HfdHPIwDLz\n" +
+	"eWE3yvoEitQQ6FA7OiUI52vwyMxaWU7SwcXtg8vEt7FeSwLd+geDgTa759YAfKO9\n" +
+	"UGAf/BzjZRkGosnrxSbK9wRa142xY4Ues+zOKlYXmb9vLVg1T2bO/sgABHWGBAk9\n" +
+	"6UT2R4Adc12kHVJKx/g=\n" +
+	"-----END PUBLIC KEY-----";
+
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_DEV;
 			
 
 	public class IntentFilters {
@@ -69,5 +78,6 @@ public class SurespotConstants {
 		public final static int REQUEST_EXISTING_IMAGE = 4;
 		public final static int REQUEST_SELECT_IMAGE = 5;
 		public final static int REQUEST_SETTINGS = 6;
+		public final static int LOGIN = 7;
 	}
 }

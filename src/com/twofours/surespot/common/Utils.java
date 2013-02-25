@@ -67,19 +67,6 @@ public class Utils {
 		return byteBuffer.toByteArray();
 	}
 
-	public static String inputStreamToBase64(InputStream inputStream) throws IOException {
-		ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
-		int bufferSize = 1024;
-		byte[] buffer = new byte[bufferSize];
-
-		int len = 0;
-		while ((len = inputStream.read(buffer)) != -1) {
-			byteBuffer.write(buffer, 0, len);
-		}
-		byteBuffer.close();
-		inputStream.close();
-		return new String(base64Encode(byteBuffer.toByteArray()));
-	}
 
 	public static byte[] base64Encode(byte[] buf) {
 		return Base64.encode(buf, Base64.NO_WRAP | Base64.URL_SAFE);

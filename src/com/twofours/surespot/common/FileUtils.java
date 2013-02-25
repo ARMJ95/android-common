@@ -24,7 +24,7 @@ public class FileUtils {
 
 		// see if we can write to the "external" storage
 		if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED || !Environment.isExternalStorageRemovable()) {
-			File fCacheDir = context.getExternalCacheDir();			
+			File fCacheDir = context.getExternalCacheDir();
 			if (fCacheDir != null) {
 				String cacheDir = fCacheDir.getPath() + File.separator + unique;
 
@@ -73,8 +73,11 @@ public class FileUtils {
 
 	public static void wipeImageCaptureDir(Context context) {
 		File dir = getImageCaptureDir(context);
-		for (File file : dir.listFiles()) {
-			file.delete();
+		File[] files = dir.listFiles();
+		if (files != null) {
+			for (File file : files) {
+				file.delete();
+			}
 		}
 	}
 };
