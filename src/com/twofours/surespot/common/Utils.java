@@ -140,6 +140,44 @@ public class Utils {
 		return null;
 
 	}
+	
+	public static HashMap<String, Boolean> jsonBooleanToMap(JSONObject jsonObject) {
+		try {
+			HashMap<String, Boolean> outMap = new HashMap<String, Boolean>();
+
+			@SuppressWarnings("unchecked")
+			Iterator<String> names = jsonObject.keys();
+			while (names.hasNext()) {
+				String name = names.next();
+				outMap.put(name, jsonObject.getBoolean(name));
+			}
+
+			return outMap;
+
+		}
+		catch (JSONException e) {
+			SurespotLog.w(TAG, "jsonToMap", e);
+		}
+		return null;
+
+	}
+
+
+	
+	public static HashMap<String, Boolean> jsonStringToBooleanMap(String jsonString) {
+
+		JSONObject jsonObject;
+		try {
+			jsonObject = new JSONObject(jsonString);
+			return jsonBooleanToMap(jsonObject);
+		}
+		catch (JSONException e) {
+			SurespotLog.w(TAG, "jsonStringToMap", e);
+		}
+
+		return null;
+
+	}
 
 	public static HashMap<String, Integer> jsonStringToMap(String jsonString) {
 
