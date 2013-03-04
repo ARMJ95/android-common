@@ -9,6 +9,7 @@ public class FileUtils {
 	private static final String STATE_DIR = "state";
 	private final static String HTTP = "http";
 	private final static String IDENTITIES_DIR = "identities";
+	private final static String PUBLICKEYS_DIR = "publicKeys";
 	private static final String TAG = "FileUtils";
 
 	public static File getHttpCacheDir(Context context) {
@@ -67,6 +68,11 @@ public class FileUtils {
 		return context.getFilesDir().getPath() + File.separator + IDENTITIES_DIR;
 	}
 
+	public static String getPublicKeyDir(Context context) {
+		return context.getFilesDir().getPath() + File.separator + PUBLICKEYS_DIR;
+	}
+
+	
 	public static String getStateDir(Context context) {
 		return context.getFilesDir().getPath() + File.separator + STATE_DIR;
 	}
