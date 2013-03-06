@@ -86,6 +86,7 @@ public class Utils {
 		}
 
 		mToast.setText(toast);
+		mToast.setGravity(android.view.Gravity.CENTER, 0, 0);
 		mToast.show();
 	}
 	
@@ -94,7 +95,7 @@ public class Utils {
 		if (mToast == null) {
 			mToast = Toast.makeText(context, toast, Toast.LENGTH_LONG);
 		}
-
+		mToast.setGravity(android.view.Gravity.CENTER, 0, 0);
 		mToast.setText(toast);
 		mToast.show();
 	}

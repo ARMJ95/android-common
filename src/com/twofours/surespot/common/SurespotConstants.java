@@ -56,6 +56,8 @@ public class SurespotConstants {
 
 	// TODO change by screen size
 	public final static int IMAGE_DISPLAY_HEIGHT = 320;
+	public final static int MAX_USERNAME_LENGTH = 24;
+	public final static int MAX_PASSWORD_LENGTH = 256;
 
 	public class PrefNames {
 		public final static String PREFS_FILE = "surespot_preferences";
