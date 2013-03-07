@@ -67,7 +67,6 @@ public class Utils {
 		return byteBuffer.toByteArray();
 	}
 
-
 	public static byte[] base64Encode(byte[] buf) {
 		return Base64.encode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
 	}
@@ -89,7 +88,6 @@ public class Utils {
 		mToast.setGravity(android.view.Gravity.CENTER, 0, 0);
 		mToast.show();
 	}
-	
 
 	public static void makeLongToast(Context context, String toast) {
 		if (mToast == null) {
@@ -99,7 +97,6 @@ public class Utils {
 		mToast.setText(toast);
 		mToast.show();
 	}
-
 
 	public static String getSharedPrefsString(Context context, String key) {
 		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE,
@@ -141,7 +138,7 @@ public class Utils {
 		return null;
 
 	}
-	
+
 	public static HashMap<String, Boolean> jsonBooleanToMap(JSONObject jsonObject) {
 		try {
 			HashMap<String, Boolean> outMap = new HashMap<String, Boolean>();
@@ -163,8 +160,6 @@ public class Utils {
 
 	}
 
-
-	
 	public static HashMap<String, Boolean> jsonStringToBooleanMap(String jsonString) {
 
 		JSONObject jsonObject;
@@ -273,19 +268,28 @@ public class Utils {
 		navView.setText(leftText);
 		userView.setText(rightText);
 	}
-	
-	
-	public static void logIntent(String tag,Intent intent) {
+
+	public static void logIntent(String tag, Intent intent) {
 		String action = intent.getAction();
 		String type = intent.getType();
 		Bundle extras = intent.getExtras();
 		Set<String> categories = intent.getCategories();
-		
+
 		SurespotLog.v(tag, "Intent action: " + action);
 		SurespotLog.v(tag, "Intent type: " + type);
 		SurespotLog.v(tag, "Intent categories: " + (categories == null ? "null" : categories.toString()));
 		SurespotLog.v(tag, "Extras: " + (extras == null ? "null" : extras.toString()));
 
 	}
-	
+
+	public static void clearIntent(Intent intent) {
+		intent.setAction(null);
+		intent.setType(null);
+		if (intent.getExtras() != null) {
+			for (String extra : intent.getExtras().keySet()) {
+				intent.removeExtra(extra);
+			}
+		}
+	}
+
 }
