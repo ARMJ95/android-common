@@ -18,7 +18,7 @@ public class SurespotConstants {
 	"6UT2R4Adc12kHVJKx/g=\n" +
 	"-----END PUBLIC KEY-----";
 
-	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_PROD;
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_DEV;
 			
 
 	public class IntentFilters {
@@ -28,12 +28,6 @@ public class SurespotConstants {
 		public static final String FRIEND_INVITE_RESPONSE_EVENT = "friend_invite_event";
 		public static final String SOCKET_CONNECTION_STATUS_CHANGED = "socket_io_connection_status_changed";
 		public static final String INVITE_NOTIFICATION = "invite_notification";
-	}
-
-	public class NotificationTags {
-		public static final String MESSAGE = "message";
-		public static final String INVITE_REQUEST = "inviteRequest";
-		public static final String INVITE_RESPONSE = "inviteRequest";
 	}
 
 	public class ExtraNames {
