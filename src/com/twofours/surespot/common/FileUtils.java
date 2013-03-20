@@ -1,8 +1,14 @@
 package com.twofours.surespot.common;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 
 public class FileUtils {
@@ -86,4 +92,37 @@ public class FileUtils {
 			}
 		}
 	}
+	
+	public static File createGalleryImageFile(String suffix) throws IOException {
+
+		// Create a unique image file name
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String imageFileName = "image" + "_" + timeStamp + suffix;
+
+		File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "surespot");
+		if (FileUtils.ensureDir(dir)) {
+			File file = new File(dir.getPath(), imageFileName);
+			file.createNewFile();
+			file.setWritable(true, false);
+			//SurespotLog.v(TAG, "createdFile: " + file.getPath());
+			return file;
+		}
+		else {
+			throw new IOException("Could not create image temp file dir: " + dir.getPath());
+		}
+
+	}
+	
+	public static void galleryAddPic(Activity activity, String path) {
+		if (activity == null || path == null || path.isEmpty()) {
+			return;
+		}
+		
+		Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+		File f = new File(path);
+		Uri contentUri = Uri.fromFile(f);
+		mediaScanIntent.setData(contentUri);
+		activity.sendBroadcast(mediaScanIntent);
+	}
+
 };
