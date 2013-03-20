@@ -46,7 +46,7 @@ public class SurespotConstants {
 
 	}
 
-	public final static int MAX_IMAGE_DIMENSION = 480;
+	public final static int MAX_IMAGE_DIMENSION = 1000;
 
 	// TODO change by screen size
 	public final static int IMAGE_DISPLAY_HEIGHT = 320;
@@ -75,5 +75,6 @@ public class SurespotConstants {
 		public final static int REQUEST_SELECT_IMAGE = 5;
 		public final static int REQUEST_SETTINGS = 6;
 		public final static int LOGIN = 7;
+		public final static int REQUEST_CAPTURE_IMAGE = 8;
 	}
 }
