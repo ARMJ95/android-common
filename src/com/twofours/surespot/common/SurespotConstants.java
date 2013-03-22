@@ -76,5 +76,6 @@ public class SurespotConstants {
 		public final static int REQUEST_SETTINGS = 6;
 		public final static int LOGIN = 7;
 		public final static int REQUEST_CAPTURE_IMAGE = 8;
+		public final static int PICK_CONTACT = 9;
 	}
 }
