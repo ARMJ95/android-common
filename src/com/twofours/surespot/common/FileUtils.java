@@ -9,7 +9,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.text.TextUtils;
 
 public class FileUtils {
 	private static final String STATE_DIR = "state";
@@ -30,14 +32,13 @@ public class FileUtils {
 		String cachePath = null;
 
 		// see if we can write to the "external" storage
-		if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED || !Environment.isExternalStorageRemovable()) {
-			File fCacheDir = context.getExternalCacheDir();
-			if (fCacheDir != null) {
-				String cacheDir = fCacheDir.getPath() + File.separator + unique;
 
-				if (ensureDir(cacheDir)) {
-					cachePath = cacheDir;
-				}
+		File fCacheDir = getExternalCacheDir(context);
+		if (fCacheDir != null) {
+			String cacheDir = fCacheDir.getPath() + File.separator + unique;
+
+			if (ensureDir(cacheDir)) {
+				cachePath = cacheDir;
 			}
 		}
 
@@ -47,6 +48,27 @@ public class FileUtils {
 
 		// SurespotLog.w(TAG,"cachePath", new Exception(cachePath));
 		return new File(cachePath);
+
+	}
+
+	private static File getExternalCacheDir(Context context) {
+		if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+			return null;
+		}
+
+		String cacheDir = null;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+			File fCacheDir = context.getExternalCacheDir();
+			if (fCacheDir != null) {
+				cacheDir = fCacheDir.getPath();
+			}
+		}
+		else {
+
+			String baseDir = Environment.getExternalStorageDirectory().getPath();
+			cacheDir = baseDir + "/Android/data/com.twofours.surespot/cache/";
+		}
+		return new File(cacheDir);
 
 	}
 
@@ -61,7 +83,6 @@ public class FileUtils {
 	}
 
 	public static File getIdentityExportDir() {
-		// TODO handle media not mounted
 		// http://stackoverflow.com/questions/5694933/find-an-external-sd-card-location/5695129#5695129
 		return new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "surespot" + File.separator + "identities");
 	}
@@ -78,7 +99,6 @@ public class FileUtils {
 		return context.getFilesDir().getPath() + File.separator + PUBLICKEYS_DIR;
 	}
 
-	
 	public static String getStateDir(Context context) {
 		return context.getFilesDir().getPath() + File.separator + STATE_DIR;
 	}
@@ -92,19 +112,19 @@ public class FileUtils {
 			}
 		}
 	}
-	
+
 	public static File createGalleryImageFile(String suffix) throws IOException {
 
 		// Create a unique image file name
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 		String imageFileName = "image" + "_" + timeStamp + suffix;
 
-		File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "surespot");
+		File dir = getPublicImageStorageDir();
 		if (FileUtils.ensureDir(dir)) {
 			File file = new File(dir.getPath(), imageFileName);
 			file.createNewFile();
-			file.setWritable(true, false);
-			//SurespotLog.v(TAG, "createdFile: " + file.getPath());
+			// file.setWritable(true, false);
+			// SurespotLog.v(TAG, "createdFile: " + file.getPath());
 			return file;
 		}
 		else {
@@ -112,12 +132,24 @@ public class FileUtils {
 		}
 
 	}
-	
+
+	private static File getPublicImageStorageDir() {
+		File imageDir;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+			imageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "surespot");
+		}
+		else {
+			imageDir = new File(Environment.getExternalStorageDirectory().getPath() + "/Pictures/surespot");
+
+		}
+		return imageDir;
+	}
+
 	public static void galleryAddPic(Activity activity, String path) {
-		if (activity == null || path == null || path.isEmpty()) {
+		if (activity == null || TextUtils.isEmpty(path)) {
 			return;
 		}
-		
+
 		Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
 		File f = new File(path);
 		Uri contentUri = Uri.fromFile(f);
@@ -125,4 +157,8 @@ public class FileUtils {
 		activity.sendBroadcast(mediaScanIntent);
 	}
 
-};
+	public static boolean isExternalStorageMounted() {
+		String state = Environment.getExternalStorageState();
+		return Environment.MEDIA_MOUNTED.equals(state);
+	}
+}

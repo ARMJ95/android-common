@@ -67,13 +67,13 @@ public class Utils {
 		return byteBuffer.toByteArray();
 	}
 
-	public static byte[] base64Encode(byte[] buf) {
-		return Base64.encode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
-	}
-
-	public static byte[] base64Decode(String buf) {
-		return Base64.decode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
-	}
+//	public static byte[] base64Encode(byte[] buf) {
+//		return Base64.encode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
+//	}
+//
+//	public static byte[] base64Decode(String buf) {
+//		return ChatUtils.base64decode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
+//	}
 
 	public static String makePagerFragmentName(int viewId, long id) {
 		return "android:switcher:" + viewId + ":" + id;
