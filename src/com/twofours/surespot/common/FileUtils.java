@@ -161,4 +161,16 @@ public class FileUtils {
 		String state = Environment.getExternalStorageState();
 		return Environment.MEDIA_MOUNTED.equals(state);
 	}
+	
+	public static void deleteRecursive(File fileOrDirectory) {
+		if (fileOrDirectory.isDirectory()) {
+			File[] files = fileOrDirectory.listFiles();
+			if (files != null) {
+				for (File child : files)
+					deleteRecursive(child);
+			}
+		}
+		fileOrDirectory.delete();
+	}
+	
 }

@@ -18,7 +18,7 @@ public class SurespotConstants {
 	"6UT2R4Adc12kHVJKx/g=\n" +
 	"-----END PUBLIC KEY-----";
 
-	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_PROD;
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_DEV;
 			
 
 	public class IntentFilters {
