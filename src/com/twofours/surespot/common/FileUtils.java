@@ -16,7 +16,7 @@ import android.text.TextUtils;
 public class FileUtils {
 	private static final String STATE_DIR = "state";
 	private final static String HTTP = "http";
-	private final static String IDENTITIES_DIR = "identities";
+	public final static String IDENTITIES_DIR = "identities";
 	private final static String PUBLICKEYS_DIR = "publicKeys";
 	private static final String TAG = "FileUtils";
 
@@ -171,6 +171,11 @@ public class FileUtils {
 			}
 		}
 		fileOrDirectory.delete();
+	}
+	
+	public static String getSharedPrefsDir(Context context) {
+		SurespotLog.v(TAG, "databasePath: " + context.getDatabasePath("ADAM"));
+		return null;
 	}
 	
 }
