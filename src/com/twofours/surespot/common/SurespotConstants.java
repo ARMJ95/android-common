@@ -59,6 +59,7 @@ public class SurespotConstants {
 		public final static String GCM_ID_SENT = "gcm_id_sent";
 		public static final String LAST_USER = "last_user";
 		public static final String LAST_CHAT = "last_chat";
+		public static final String REFERRERS = "referrers";
 	}
 
 	public class MimeTypes {
