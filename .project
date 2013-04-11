@@ -36,10 +36,5 @@
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/github/src/acra-4.4.0/build/acra-4.4.0.jar</locationURI>
 		</link>
-		<link>
-			<name>libs/httpclientandroidlib-1.1.1.jar</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/google/adam-httpclientandroidlib/script/httpclientandroidlib-1.1.1.jar</locationURI>
-		</link>
 	</linkedResources>
 </projectDescription>
