@@ -52,6 +52,8 @@ public class SurespotConstants {
 	public final static int IMAGE_DISPLAY_HEIGHT = 320;
 	public final static int MAX_USERNAME_LENGTH = 24;
 	public final static int MAX_PASSWORD_LENGTH = 256;
+	public final static int SAVE_MESSAGE_BUFFER = 25;
+	public final static int SAVE_MESSAGE_MINIMUM = 50;
 
 	public class PrefNames {
 		public final static String PREFS_FILE = "surespot_preferences";
