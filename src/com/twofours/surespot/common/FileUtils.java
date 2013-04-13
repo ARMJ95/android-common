@@ -173,9 +173,5 @@ public class FileUtils {
 		fileOrDirectory.delete();
 	}
 	
-	public static String getSharedPrefsDir(Context context) {
-		SurespotLog.v(TAG, "databasePath: " + context.getDatabasePath("ADAM"));
-		return null;
-	}
 	
 }
