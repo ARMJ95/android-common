@@ -30,7 +30,7 @@ public class SurespotConfiguration {
 			SurespotLog.v(TAG, "baseUrl: " + SurespotConfiguration.getBaseUrl());		
 		}
 		catch (Exception e) {
-			SurespotLog.e(TAG, "could not load configuration properties", e);
+			SurespotLog.e(TAG, e, "could not load configuration properties");
 		}
 	}
 
