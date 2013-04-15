@@ -1,9 +1,13 @@
 package com.twofours.surespot.common;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import android.app.Activity;
 import android.content.Context;
@@ -161,7 +165,7 @@ public class FileUtils {
 		String state = Environment.getExternalStorageState();
 		return Environment.MEDIA_MOUNTED.equals(state);
 	}
-	
+
 	public static void deleteRecursive(File fileOrDirectory) {
 		if (fileOrDirectory.isDirectory()) {
 			File[] files = fileOrDirectory.listFiles();
@@ -172,6 +176,25 @@ public class FileUtils {
 		}
 		fileOrDirectory.delete();
 	}
-	
-	
+
+	public static void writeFile(String filename, String data) throws IOException {
+		SurespotLog.v(TAG, "writeFile, %s: %s", filename, data.substring(0, data.length() > 100 ? 100 : data.length()));
+		writeFile(filename, data.getBytes());
+	}
+
+	public static void writeFile(String filename, byte[] data) throws IOException {
+		SurespotLog.v(TAG, "writeFile, %s", filename);
+
+		GZIPOutputStream fos = new GZIPOutputStream(new FileOutputStream(filename));
+		fos.write(data);
+		fos.close();
+
+	}
+
+	public static byte[] readFile(String filename) throws IOException {
+		GZIPInputStream zis = new GZIPInputStream(new FileInputStream(filename));
+		byte[] input = Utils.inputStreamToBytes(zis);
+		return input;
+	}
+
 }

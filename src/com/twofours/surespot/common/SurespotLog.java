@@ -7,14 +7,16 @@ import ch.boye.httpclientandroidlib.client.HttpResponseException;
 
 public class SurespotLog {
 	// TODO set false for production
-	private static boolean mLogging = true;
+	private static boolean mLogging = SurespotConstants.LOGGING;
+	// TODO set true for production
+	private static boolean mReport = SurespotConstants.CRASH_REPORTING;
 
 	public static void setLogging(boolean logging) {
 		v("SurespotLog", "setting logging to: %b", logging);
 		mLogging = logging;
 	}
 
-	//by using string.format we avoid string concat overhead when logging is disabled
+	// by using string.format we avoid string concat overhead when logging is disabled
 	public static void w(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
 			Log.w(tag, String.format(msg, msgArgs));
@@ -27,7 +29,9 @@ public class SurespotLog {
 			Log.w(tag, String.format(msg, msgArgs), tr);
 		}
 
-		ACRA.getErrorReporter().handleSilentException(tr);
+		if (mReport) {
+			ACRA.getErrorReporter().handleSilentException(tr);
+		}
 	}
 
 	public static void v(String tag, String msg, Object... msgArgs) {
@@ -62,8 +66,9 @@ public class SurespotLog {
 				return;
 			}
 		}
-
-		ACRA.getErrorReporter().handleSilentException(tr);
+		if (mReport) {
+			ACRA.getErrorReporter().handleSilentException(tr);
+		}
 
 	}
 
@@ -78,7 +83,10 @@ public class SurespotLog {
 		if (mLogging) {
 			Log.v(tag, String.format(msg, msgArgs), tr);
 		}
+		
+		if (mReport) {
+			ACRA.getErrorReporter().handleSilentException(tr);
+		}
 
-		ACRA.getErrorReporter().handleSilentException(tr);
 	}
 }

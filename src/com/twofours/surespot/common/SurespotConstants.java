@@ -54,6 +54,11 @@ public class SurespotConstants {
 	public final static int MAX_PASSWORD_LENGTH = 256;
 	public final static int SAVE_MESSAGE_BUFFER = 25;
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
+	
+	//TODO change to false for production
+	public final static boolean LOGGING = true;
+	//TODO change to true for production
+	public final static boolean CRASH_REPORTING = false;
 
 	public class PrefNames {
 		public final static String PREFS_FILE = "surespot_preferences";
