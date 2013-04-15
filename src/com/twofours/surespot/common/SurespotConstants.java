@@ -50,7 +50,7 @@ public class SurespotConstants {
 
 	// TODO change by screen size
 	public final static int IMAGE_DISPLAY_HEIGHT = 320;
-	public final static int MAX_USERNAME_LENGTH = 24;
+	public final static int MAX_USERNAME_LENGTH = 20;
 	public final static int MAX_PASSWORD_LENGTH = 256;
 	public final static int SAVE_MESSAGE_BUFFER = 25;
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
