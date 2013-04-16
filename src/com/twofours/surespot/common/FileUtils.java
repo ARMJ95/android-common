@@ -138,6 +138,10 @@ public class FileUtils {
 		}
 
 	}
+	
+	public static String getImageUploadDir(Context context) {
+		return getCacheDir(context, "uploadedImages").getPath();
+	}
 
 	private static File getPublicImageStorageDir() {
 		File imageDir;
