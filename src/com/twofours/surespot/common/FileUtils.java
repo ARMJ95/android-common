@@ -88,7 +88,9 @@ public class FileUtils {
 
 	public static File getIdentityExportDir() {
 		// http://stackoverflow.com/questions/5694933/find-an-external-sd-card-location/5695129#5695129
-		return new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "surespot" + File.separator + "identities");
+		File exportDir = new File(Environment.getExternalStorageDirectory().getPath() + File.separator + "surespot" + File.separator + "identities");
+		exportDir.mkdirs();		
+		return exportDir;
 	}
 
 	public static File getImageCaptureDir(Context context) {
