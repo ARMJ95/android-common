@@ -59,6 +59,7 @@ public class SurespotLog {
 
 			// no need to report these
 			switch (statusCode) {
+			case 400:
 			case 401:
 			case 403:
 			case 404:
