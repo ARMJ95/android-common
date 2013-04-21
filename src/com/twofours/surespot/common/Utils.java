@@ -189,7 +189,7 @@ public class Utils {
 
 	}
 
-	public String md5(String s) {
+	public static String md5(String s) {
 		try {
 			// Create MD5 Hash
 			MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
@@ -208,6 +208,8 @@ public class Utils {
 		}
 		return "";
 	}
+	
+	
 
 	/**
 	 * Configure the title bar the way we want it. Would be nice if sherlock would give us an interface.
