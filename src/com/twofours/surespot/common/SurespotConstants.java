@@ -46,7 +46,8 @@ public class SurespotConstants {
 
 	}
 
-	public final static int MAX_IMAGE_DIMENSION = 1000;
+	public final static int MESSAGE_IMAGE_DIMENSION = 1000;
+	public final static int FRIEND_IMAGE_DIMENSION = 100;
 
 	// TODO change by screen size
 	public final static int IMAGE_DISPLAY_HEIGHT = 320;
@@ -85,5 +86,6 @@ public class SurespotConstants {
 		public final static int LOGIN = 7;
 		public final static int REQUEST_CAPTURE_IMAGE = 8;
 		public final static int PICK_CONTACT = 9;
+		public final static int REQUEST_SELECT_FRIEND_IMAGE = 10;
 	}
 }
