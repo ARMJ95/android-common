@@ -292,5 +292,16 @@ public class Utils {
 			}
 		}
 	}
+	
+	  public static String getResourceString(Context context, String name) {
+	        int nameResourceID = context.getResources().getIdentifier(name, "string",
+	                context.getApplicationInfo().packageName);
+	        if (nameResourceID == 0) {
+	            throw new IllegalArgumentException("No resource string found with name " + name);
+	        } else {
+	            return context.getString(nameResourceID);
+	        }
+	    }
+
 
 }
