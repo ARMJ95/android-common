@@ -29,9 +29,9 @@ public class SurespotLog {
 			Log.w(tag, String.format(msg, msgArgs), tr);
 		}
 
-		if (mReport) {
-			ACRA.getErrorReporter().handleSilentException(tr);
-		}
+//		if (mReport) {
+//			ACRA.getErrorReporter().handleSilentException(tr);
+//		}
 	}
 
 	public static void v(String tag, String msg, Object... msgArgs) {

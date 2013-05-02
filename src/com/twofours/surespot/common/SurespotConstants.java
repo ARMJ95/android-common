@@ -22,7 +22,7 @@ public class SurespotConstants {
 	
 	public static final String GOOGLE_APP_LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAytYzwMl/RLFQWotcjazzM/xbgqU/UCMEjBJ3QgRG2aT0B0+LCaEkq4bL1FnDvXxUmKOAfGnhn7zbFMfgrfTOOvTuioKgspLE2RLryl9K9MnAxBn2rxBv45gG2E+K97gs7qqrxfrAUTTZPfq8McXVLc3k9WWOf/pfiH25WL7ijig3CNkzJ+BP1u2KQiFltsdln7q+9tMddUWUxd8zP6c0hmCIB9DYLutfqmel0ckjfEPAhTKqsOIpryzcGLZCs2C22Qg0AllQ62ohidEIFdA0SYKp0CjO9E5NO1pM+ZnBlf/cmdEwlhuYyh26rUcZj342fNhWzwiiHIeiiedvXOOS8wIDAQAB";
 
-	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_PROD;
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_STAGE;
 			
 
 	public class IntentFilters {
@@ -59,6 +59,7 @@ public class SurespotConstants {
 	public final static int MAX_PASSWORD_LENGTH = 256;
 	public final static int SAVE_MESSAGE_BUFFER = 25;
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
+	public final static int MAX_MESSAGE_LENGTH = 1024;
 	
 	//TODO change to false for production
 	public final static boolean LOGGING = true;
