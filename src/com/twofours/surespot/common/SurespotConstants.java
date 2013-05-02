@@ -61,9 +61,9 @@ public class SurespotConstants {
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
 	public final static int MAX_MESSAGE_LENGTH = 1024;
 	
-	//TODO change to false for production
+	//TODO false for production
 	public final static boolean LOGGING = true;
-	//TODO change to true for production
+	//TODO false for production
 	public final static boolean CRASH_REPORTING = false;
 
 	public class PrefNames {
