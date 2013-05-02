@@ -23,8 +23,7 @@ public class WebClientDevWrapper {
 
 		SSLSocketFactory ssf = new SSLSocketFactory(getSSLContext());
 		// TODO Compile out for prod
-		if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
-
+		if (SurespotConfiguration.isSslCheckingStrict()) {
 			ssf.setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
 		}
 		else {
@@ -37,7 +36,7 @@ public class WebClientDevWrapper {
 
 	public static javax.net.SocketFactory getWebSocketFactory() {
 
-		if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
+		if (SurespotConfiguration.isSslCheckingStrict()) {
 			return SSLCertificateSocketFactory.getDefault();
 		}
 		else {
@@ -51,7 +50,7 @@ public class WebClientDevWrapper {
 			try {
 
 				mSSLContext = SSLContext.getInstance("TLS");
-				if (SurespotConfiguration.getEnvironment() != SurespotConfiguration.ENVIRONMENT_DEV) {
+				if (SurespotConfiguration.isSslCheckingStrict()) {
 					mSSLContext.init(null, null, null);
 				}
 				else {

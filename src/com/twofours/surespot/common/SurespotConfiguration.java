@@ -6,14 +6,11 @@ import java.util.Properties;
 import android.content.Context;
 
 public class SurespotConfiguration {
-	public static final int ENVIRONMENT_DEV = 0;
-	public static final int ENVIRONMENT_STAGE = 1;
-	public static final int ENVIRONMENT_PROD = 1;
-
-	
+	public static final int SSL_NOT_STRICT = 0;
+		
 	private static final String TAG = "Configuration";
 	private static Properties mConfigProperties;
-	private static int mEnv;
+	private static boolean mStrictSsl;
 	private static String mBaseUrl;
 	
 
@@ -24,10 +21,10 @@ public class SurespotConfiguration {
 			Properties properties = new Properties();
 			properties.load(rawResource);
 			mConfigProperties = properties;
-			mEnv = Integer.parseInt((String) properties.get("environment"));
+			mStrictSsl =  Boolean.parseBoolean((String) properties.get("ssl_strict"));
 			mBaseUrl = (String) properties.get("baseUrl");
-			SurespotLog.v(TAG, "env: " + SurespotConfiguration.getEnvironment());
-			SurespotLog.v(TAG, "baseUrl: " + SurespotConfiguration.getBaseUrl());		
+			SurespotLog.v(TAG, "ssl_strict: %b", SurespotConfiguration.isSslCheckingStrict());
+			SurespotLog.v(TAG, "baseUrl: %s", SurespotConfiguration.getBaseUrl());		
 		}
 		catch (Exception e) {
 			SurespotLog.e(TAG, e, "could not load configuration properties");
@@ -39,8 +36,8 @@ public class SurespotConfiguration {
 	}
 
 	
-	public static int getEnvironment() {
-		return mEnv;
+	public static boolean isSslCheckingStrict() {
+		return mStrictSsl;
 	}
 	
 	public static String getBaseUrl() {

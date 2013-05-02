@@ -3,25 +3,26 @@ package com.twofours.surespot.common;
 
 public class SurespotConstants {
 
-	private static final String SERVER_PUBLIC_KEY_DEV = 
+	private static final String SERVER_PUBLIC_KEY_STAGE = 
 			  "-----BEGIN PUBLIC KEY-----\n" +
 			  "MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBBpDN/3pyASvHhkY5eb7SEGqN0BkU\n" +
 			  "rE+XR4YPDuA84B69n7LFxXtQwf+iQFpaKTskp3TLV2DSB0RGAUAbXxGOHPUAntbw\n" +
 			  "3tfnOP8ti7L6jRuGdTJkzy86k5hrlb010OUS7dSHzLlfKxIuj7mmvtHvqfEWOBhL\n" +
 			  "O34yFdvRBoN0+KvLvWo=\n" + 
 			  "-----END PUBLIC KEY-----";
-	private static final String SERVER_PUBLIC_KEY_PROD =
-	"-----BEGIN PUBLIC KEY-----\n" + 
-	"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBHYBSUCgPnd4Fmj8Zq4HfdHPIwDLz\n" +
-	"eWE3yvoEitQQ6FA7OiUI52vwyMxaWU7SwcXtg8vEt7FeSwLd+geDgTa759YAfKO9\n" +
-	"UGAf/BzjZRkGosnrxSbK9wRa142xY4Ues+zOKlYXmb9vLVg1T2bO/sgABHWGBAk9\n" +
-	"6UT2R4Adc12kHVJKx/g=\n" +
-	"-----END PUBLIC KEY-----";
-	
+	private static final String SERVER_PUBLIC_KEY_PROD =			
+			"-----BEGIN PUBLIC KEY-----\n" +
+			"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBaKZxJgGhnJ7v78N1MfbUQUAGD+Fq\n" +
+			"vlBEF8tW4w3iMqEw6biOe37XICc+iYiJdCZ/uzrSTODJtSF1WI1NBWlAlosAXBP+\n" +
+			"+ypzzyiA7PtX4HOmgZ6fBQUS4ujKAyIkssKaKK8JAsy1eWqxSWFF5kCpZAwBR5jp\n" +
+			"9ht00UV2HtyGhAg647c=\n" +
+			"-----END PUBLIC KEY-----";
+
+				
 	
 	public static final String GOOGLE_APP_LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAytYzwMl/RLFQWotcjazzM/xbgqU/UCMEjBJ3QgRG2aT0B0+LCaEkq4bL1FnDvXxUmKOAfGnhn7zbFMfgrfTOOvTuioKgspLE2RLryl9K9MnAxBn2rxBv45gG2E+K97gs7qqrxfrAUTTZPfq8McXVLc3k9WWOf/pfiH25WL7ijig3CNkzJ+BP1u2KQiFltsdln7q+9tMddUWUxd8zP6c0hmCIB9DYLutfqmel0ckjfEPAhTKqsOIpryzcGLZCs2C22Qg0AllQ62ohidEIFdA0SYKp0CjO9E5NO1pM+ZnBlf/cmdEwlhuYyh26rUcZj342fNhWzwiiHIeiiedvXOOS8wIDAQAB";
 
-	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_DEV;
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_PROD;
 			
 
 	public class IntentFilters {
