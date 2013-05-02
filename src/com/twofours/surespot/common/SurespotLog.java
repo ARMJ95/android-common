@@ -8,8 +8,6 @@ import ch.boye.httpclientandroidlib.client.HttpResponseException;
 public class SurespotLog {
 	// TODO set false for production
 	private static boolean mLogging = SurespotConstants.LOGGING;
-	// TODO set true for production
-	private static boolean mReport = SurespotConstants.CRASH_REPORTING;
 
 	public static void setLogging(boolean logging) {
 		v("SurespotLog", "setting logging to: %b", logging);
@@ -67,9 +65,9 @@ public class SurespotLog {
 				return;
 			}
 		}
-		if (mReport) {
-			ACRA.getErrorReporter().handleSilentException(tr);
-		}
+//		if (mReport) {
+//			ACRA.getErrorReporter().handleSilentException(tr);
+//		}
 
 	}
 
@@ -85,9 +83,9 @@ public class SurespotLog {
 			Log.v(tag, String.format(msg, msgArgs), tr);
 		}
 		
-		if (mReport) {
-			ACRA.getErrorReporter().handleSilentException(tr);
-		}
+//		if (mReport) {
+//			ACRA.getErrorReporter().handleSilentException(tr);
+//		}
 
 	}
 }
