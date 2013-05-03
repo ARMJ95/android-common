@@ -60,6 +60,7 @@ public class SurespotConstants {
 	public final static int SAVE_MESSAGE_BUFFER = 25;
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
 	public final static int MAX_MESSAGE_LENGTH = 1024;
+	public final static int MAX_IDENTITIES = 3;
 	
 	//TODO false for production
 	public final static boolean LOGGING = true;
