@@ -7,18 +7,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -66,13 +72,13 @@ public class Utils {
 		return byteBuffer.toByteArray();
 	}
 
-//	public static byte[] base64Encode(byte[] buf) {
-//		return Base64.encode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
-//	}
-//
-//	public static byte[] base64Decode(String buf) {
-//		return ChatUtils.base64decode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
-//	}
+	// public static byte[] base64Encode(byte[] buf) {
+	// return Base64.encode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
+	// }
+	//
+	// public static byte[] base64Decode(String buf) {
+	// return ChatUtils.base64decode(buf, Base64.NO_WRAP | Base64.URL_SAFE);
+	// }
 
 	public static String makePagerFragmentName(int viewId, long id) {
 		return "android:switcher:" + viewId + ":" + id;
@@ -208,8 +214,6 @@ public class Utils {
 		}
 		return "";
 	}
-	
-	
 
 	/**
 	 * Configure the title bar the way we want it. Would be nice if sherlock would give us an interface.
@@ -292,16 +296,32 @@ public class Utils {
 			}
 		}
 	}
-	
-	  public static String getResourceString(Context context, String name) {
-	        int nameResourceID = context.getResources().getIdentifier(name, "string",
-	                context.getApplicationInfo().packageName);
-	        if (nameResourceID == 0) {
-	            throw new IllegalArgumentException("No resource string found with name " + name);
-	        } else {
-	            return context.getString(nameResourceID);
-	        }
-	    }
 
+	public static String getResourceString(Context context, String name) {
+		int nameResourceID = context.getResources().getIdentifier(name, "string", context.getApplicationInfo().packageName);
+		if (nameResourceID == 0) {
+			throw new IllegalArgumentException("No resource string found with name " + name);
+		}
+		else {
+			return context.getString(nameResourceID);
+		}
+	}
 
+	public static ArrayList<String> getToEmails(Context context) {
+		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+		Account[] accounts = AccountManager.get(context).getAccounts();
+		ArrayList<String> emailAddresses = new ArrayList(accounts.length);
+		for (android.accounts.Account account : accounts) {
+			if (emailPattern.matcher(account.name).matches()) {
+				if (!emailAddresses.contains(account.name.toLowerCase())) {
+					emailAddresses.add(account.name);
+				}
+
+			}
+		}
+		
+		Collections.sort(emailAddresses);
+		
+		return emailAddresses; 
+	}
 }
