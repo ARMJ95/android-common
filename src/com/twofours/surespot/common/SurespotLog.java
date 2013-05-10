@@ -6,9 +6,7 @@ import android.util.Log;
 import ch.boye.httpclientandroidlib.client.HttpResponseException;
 
 public class SurespotLog {
-	// PROD set false for production
 	private static boolean mLogging = SurespotConstants.LOGGING;
-	// PROD set false for production
 	private static boolean mReport = SurespotConstants.CRASH_REPORTING;
 
 	public static void setLogging(boolean logging) {

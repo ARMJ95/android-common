@@ -4,25 +4,26 @@ package com.twofours.surespot.common;
 public class SurespotConstants {
 
 	private static final String SERVER_PUBLIC_KEY_STAGE = 
-			  "-----BEGIN PUBLIC KEY-----\n" +
-			  "MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBBpDN/3pyASvHhkY5eb7SEGqN0BkU\n" +
-			  "rE+XR4YPDuA84B69n7LFxXtQwf+iQFpaKTskp3TLV2DSB0RGAUAbXxGOHPUAntbw\n" +
-			  "3tfnOP8ti7L6jRuGdTJkzy86k5hrlb010OUS7dSHzLlfKxIuj7mmvtHvqfEWOBhL\n" +
-			  "O34yFdvRBoN0+KvLvWo=\n" + 
-			  "-----END PUBLIC KEY-----";
+			"-----BEGIN PUBLIC KEY-----\n" +
+			"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAaNTBqro6W7uAgKnFKru0Smmm3FvF\n" +
+			"irsMfgqikhchwLuORnt+NzeSx92Y6lS0MIzqI59Frk/0dg0TSQemrUWll00AGubW\n" +
+			"fdiIiltWrSXszni8tgtZf0y7DRcgSfBTrPIxCF0BJBw6UFA6CxzP7J0gQ53lKMay\n" +
+			"k+DvLYOcsi7RY2WLVfY=\n" +
+			"-----END PUBLIC KEY-----";
+			  
 	private static final String SERVER_PUBLIC_KEY_PROD =			
 			"-----BEGIN PUBLIC KEY-----\n" +
-			"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBaKZxJgGhnJ7v78N1MfbUQUAGD+Fq\n" +
-			"vlBEF8tW4w3iMqEw6biOe37XICc+iYiJdCZ/uzrSTODJtSF1WI1NBWlAlosAXBP+\n" +
-			"+ypzzyiA7PtX4HOmgZ6fBQUS4ujKAyIkssKaKK8JAsy1eWqxSWFF5kCpZAwBR5jp\n" +
-			"9ht00UV2HtyGhAg647c=\n" +
+			"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQA/mqxm0092ovWqQluMYWJXc7iE+0v\n" +
+			"mrA8vJNUo1bAEe9dWY9FucDnZIbNNNGKh8soA9Ej7gyW9Yc6D7llh52LhscBpGd6\n" +
+			"bX+FNZEROhIDJP2KgTTKVX+ASB0WtPT3V9AbyoAAxEse8IP5Wec5ZGQG1B/mOlGm\n" +
+			"Z/aaRkB1bwl9eCNojpw=\n" +
 			"-----END PUBLIC KEY-----";
-
 				
 	
 	public static final String GOOGLE_APP_LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAytYzwMl/RLFQWotcjazzM/xbgqU/UCMEjBJ3QgRG2aT0B0+LCaEkq4bL1FnDvXxUmKOAfGnhn7zbFMfgrfTOOvTuioKgspLE2RLryl9K9MnAxBn2rxBv45gG2E+K97gs7qqrxfrAUTTZPfq8McXVLc3k9WWOf/pfiH25WL7ijig3CNkzJ+BP1u2KQiFltsdln7q+9tMddUWUxd8zP6c0hmCIB9DYLutfqmel0ckjfEPAhTKqsOIpryzcGLZCs2C22Qg0AllQ62ohidEIFdA0SYKp0CjO9E5NO1pM+ZnBlf/cmdEwlhuYyh26rUcZj342fNhWzwiiHIeiiedvXOOS8wIDAQAB";
 
-	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_STAGE;
+	//PROD
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_PROD;
 			
 
 	public class IntentFilters {
@@ -50,7 +51,7 @@ public class SurespotConstants {
 
 	}
 
-	public final static int MESSAGE_IMAGE_DIMENSION = 1000;
+	public final static int MESSAGE_IMAGE_DIMENSION = 800;
 	public final static int FRIEND_IMAGE_DIMENSION = 100;
 
 	// TODO change by screen size
@@ -60,11 +61,13 @@ public class SurespotConstants {
 	public final static int SAVE_MESSAGE_BUFFER = 25;
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
 	public final static int MAX_MESSAGE_LENGTH = 1024;
+	
+	//PROD set to 3
 	public final static int MAX_IDENTITIES = 3;
 	
-	//TODO false for production
-	public final static boolean LOGGING = true;
-	//TODO false for production
+	//PROD false for production
+	public final static boolean LOGGING = false;
+	//PROD false for production
 	public final static boolean CRASH_REPORTING = false;
 
 	public class PrefNames {
@@ -93,5 +96,6 @@ public class SurespotConstants {
 		public final static int REQUEST_CAPTURE_IMAGE = 8;
 		public final static int PICK_CONTACT = 9;
 		public final static int REQUEST_SELECT_FRIEND_IMAGE = 10;
+		public final static int BACKUP_NOTIFICATION =11;
 	}
 }
