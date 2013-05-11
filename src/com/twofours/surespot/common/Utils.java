@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -275,11 +276,13 @@ public class Utils {
 	}
 
 	public static void logIntent(String tag, Intent intent) {
+		Uri uri = intent.getData();
 		String action = intent.getAction();
 		String type = intent.getType();
 		Bundle extras = intent.getExtras();
 		Set<String> categories = intent.getCategories();
 
+		SurespotLog.v(tag, "Intent uri: " + uri);
 		SurespotLog.v(tag, "Intent action: " + action);
 		SurespotLog.v(tag, "Intent type: " + type);
 		SurespotLog.v(tag, "Intent categories: " + (categories == null ? "null" : categories.toString()));
