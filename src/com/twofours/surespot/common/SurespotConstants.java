@@ -2,8 +2,16 @@ package com.twofours.surespot.common;
 
 
 public class SurespotConstants {
+	
+	private static final String SERVER_PUBLIC_KEY_LOCAL = 
+			"-----BEGIN PUBLIC KEY-----\n" + 
+			"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQA93Acih23m8Jy65gLo8A9t0/snVXe\n" +
+			"Rm+6ucIp56cXPgYvBwKDxT30z/HU84HPm2T8lnKQjFGMTUKHnIW+vqKFZicAokkW\n" +
+			"J/GoFMDGz5tEDGEQrHk/tswEysri5V++kzwlORA+kAxAasdx7Hezl0QfvkPScr3N\n" +
+			"5ifR7m1J+RFNqK0bulQ=\n" +
+			"-----END PUBLIC KEY-----";
 
-	private static final String SERVER_PUBLIC_KEY_STAGE = 
+	private static final String SERVER_PUBLIC_KEY_STAGE = 			
 			"-----BEGIN PUBLIC KEY-----\n" +
 			"MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQAaNTBqro6W7uAgKnFKru0Smmm3FvF\n" +
 			"irsMfgqikhchwLuORnt+NzeSx92Y6lS0MIzqI59Frk/0dg0TSQemrUWll00AGubW\n" +
@@ -66,7 +74,7 @@ public class SurespotConstants {
 	public final static int MAX_IDENTITIES = 3;
 	
 	//PROD false for production
-	public final static boolean LOGGING = false;
+	public final static boolean LOGGING = true;
 	//PROD false for production
 	public final static boolean CRASH_REPORTING = false;
 
