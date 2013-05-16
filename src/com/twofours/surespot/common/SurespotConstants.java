@@ -74,7 +74,7 @@ public class SurespotConstants {
 	public final static int MAX_IDENTITIES = 3;
 	
 	//PROD false for production
-	public final static boolean LOGGING = true;
+	public final static boolean LOGGING = false;
 	//PROD false for production
 	public final static boolean CRASH_REPORTING = false;
 
