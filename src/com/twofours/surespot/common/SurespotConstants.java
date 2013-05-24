@@ -54,6 +54,9 @@ public class SurespotConstants {
 	public final static int SAVE_MESSAGE_BUFFER = 25;
 	public final static int SAVE_MESSAGE_MINIMUM = 50;
 	public final static int MAX_MESSAGE_LENGTH = 1024;
+	
+	public final static String DRIVE_IDENTITY_FOLDER = "surespot identity backups";
+	
 
 	// PROD set to 3
 	public final static int MAX_IDENTITIES = 3;
@@ -75,6 +78,9 @@ public class SurespotConstants {
 	public class MimeTypes {
 		public final static String TEXT = "text/plain";
 		public final static String IMAGE = "image/";
+		public final static String DRIVE_FOLDER = "application/vnd.google-apps.folder";
+		public final static String DRIVE_FILE = "application/vnd.google-apps.file";
+		public final static String SURESPOT_IDENTITY = "application/ssi";
 	}
 
 	public class IntentRequestCodes {
@@ -91,5 +97,6 @@ public class SurespotConstants {
 		public final static int REQUEST_SELECT_FRIEND_IMAGE = 10;
 		public final static int BACKUP_NOTIFICATION = 11;
 		public final static int CHOOSE_GOOGLE_ACCOUNT = 12;
+		public final static int REQUEST_GOOGLE_AUTH = 13;
 	}
 }
