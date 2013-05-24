@@ -105,19 +105,16 @@ public class Utils {
 	}
 
 	public static String getSharedPrefsString(Context context, String key) {
-		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE,
-				android.content.Context.MODE_PRIVATE);
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
 		return settings.getString(key, null);
 	}
 
 	public static void putSharedPrefsString(Context context, String key, String value) {
-		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE,
-				android.content.Context.MODE_PRIVATE);
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
 		Editor editor = settings.edit();
 		if (value == null) {
 			editor.remove(key);
-		}
-		else {
+		} else {
 			editor.putString(key, value);
 		}
 		editor.commit();
@@ -137,8 +134,7 @@ public class Utils {
 
 			return outMap;
 
-		}
-		catch (JSONException e) {
+		} catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonToMap", e);
 		}
 		return null;
@@ -158,8 +154,7 @@ public class Utils {
 
 			return outMap;
 
-		}
-		catch (JSONException e) {
+		} catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonToMap", e);
 		}
 		return null;
@@ -172,8 +167,7 @@ public class Utils {
 		try {
 			jsonObject = new JSONObject(jsonString);
 			return jsonBooleanToMap(jsonObject);
-		}
-		catch (JSONException e) {
+		} catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonStringToMap", e);
 		}
 
@@ -187,8 +181,7 @@ public class Utils {
 		try {
 			jsonObject = new JSONObject(jsonString);
 			return jsonToMap(jsonObject);
-		}
-		catch (JSONException e) {
+		} catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonStringToMap", e);
 		}
 
@@ -209,8 +202,7 @@ public class Utils {
 				hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
 			return hexString.toString();
 
-		}
-		catch (NoSuchAlgorithmException e) {
+		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 		return "";
@@ -291,11 +283,14 @@ public class Utils {
 	}
 
 	public static void clearIntent(Intent intent) {
-		intent.setAction(null);
-		intent.setType(null);
-		if (intent.getExtras() != null) {
-			for (String extra : intent.getExtras().keySet()) {
-				intent.removeExtra(extra);
+		if (intent != null) {
+			intent.setData(null);
+			intent.setAction(null);
+			intent.setType(null);
+			if (intent.getExtras() != null) {
+				for (String extra : intent.getExtras().keySet()) {
+					intent.removeExtra(extra);
+				}
 			}
 		}
 	}
@@ -304,8 +299,7 @@ public class Utils {
 		int nameResourceID = context.getResources().getIdentifier(name, "string", context.getApplicationInfo().packageName);
 		if (nameResourceID == 0) {
 			throw new IllegalArgumentException("No resource string found with name " + name);
-		}
-		else {
+		} else {
 			return context.getString(nameResourceID);
 		}
 	}
@@ -322,9 +316,9 @@ public class Utils {
 
 			}
 		}
-		
+
 		Collections.sort(emailAddresses);
-		
-		return emailAddresses; 
+
+		return emailAddresses;
 	}
 }
