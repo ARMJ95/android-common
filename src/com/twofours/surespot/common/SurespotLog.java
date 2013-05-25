@@ -93,4 +93,8 @@ public class SurespotLog {
 //		}
 
 	}
+
+	public static boolean isLogging() {
+		return mLogging;
+	}
 }
