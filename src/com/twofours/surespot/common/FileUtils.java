@@ -200,4 +200,11 @@ public class FileUtils {
 		return input;
 	}
 
+	public static boolean isGzipCompressed(byte[] bytes) {
+		if ((bytes == null) || (bytes.length < 2)) {
+			return false;
+		} else {
+			return ((bytes[0] == (byte) (GZIPInputStream.GZIP_MAGIC)) && (bytes[1] == (byte) (GZIPInputStream.GZIP_MAGIC >> 8)));
+		}
+	}
 }
