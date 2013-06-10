@@ -1,5 +1,6 @@
 package com.twofours.surespot.common;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -199,6 +200,13 @@ public class FileUtils {
 		byte[] input = Utils.inputStreamToBytes(zis);
 		return input;
 	}
+	
+	public static byte[] readFileNoGzip(String filename) throws IOException {
+		FileInputStream fis = new FileInputStream(filename);
+		byte[] input = Utils.inputStreamToBytes(fis);
+		return input;
+	}
+
 
 	public static boolean isGzipCompressed(byte[] bytes) {
 		if ((bytes == null) || (bytes.length < 2)) {
@@ -206,5 +214,24 @@ public class FileUtils {
 		} else {
 			return ((bytes[0] == (byte) (GZIPInputStream.GZIP_MAGIC)) && (bytes[1] == (byte) (GZIPInputStream.GZIP_MAGIC >> 8)));
 		}
+	}
+
+	public static byte[] gunzipIfNecessary(byte[] identityBytes) {
+		// see if it's gzipped - RM#260 doh
+		// TODO take this code out one day
+		if (FileUtils.isGzipCompressed(identityBytes)) {
+			SurespotLog.v(TAG, "gzipped, gunzipping");
+			ByteArrayInputStream in = new ByteArrayInputStream(identityBytes);
+			try {
+				GZIPInputStream gzin = new GZIPInputStream(in);
+				return Utils.inputStreamToBytes(gzin);
+			} catch (IOException e) {
+				SurespotLog.w(TAG, e, "error gunzipping identity");
+			}
+
+		} else {
+			SurespotLog.v(TAG, "not gzipped, not gunzipping");
+		}
+		return identityBytes;
 	}
 }
