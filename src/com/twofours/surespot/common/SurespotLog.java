@@ -81,7 +81,15 @@ public class SurespotLog {
 			Log.i(tag, String.format(msg, msgArgs));
 		}
 
+		
 	}
+	
+	public static void i(String tag, Throwable tr, String msg, Object... msgArgs) {
+		if (mLogging) {
+			Log.e(tag, String.format(msg, msgArgs), tr);
+		}
+	}
+
 
 	public static void v(String tag, Throwable tr, String msg, Object... msgArgs) {
 		if (mLogging) {
