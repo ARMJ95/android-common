@@ -27,12 +27,18 @@ public class SurespotLog {
 	}
 
 	public static void w(String tag, Throwable tr, String msg, Object... msgArgs) {
+		String message = null;
 		if (mLogging) {
+			message = String.format(msg, msgArgs);
 			// Log.w(tag, msg +", " + tr.getMessage());
-			Log.w(tag, String.format(msg, msgArgs), tr);
+			Log.w(tag, message, tr);
 		}
 
 		if (mReport) {
+			if (message == null) {
+				message = String.format(msg, msgArgs);	
+			}
+			ACRA.getErrorReporter().putCustomData("message", message);
 			ACRA.getErrorReporter().handleSilentException(tr);
 		}
 	}
@@ -52,8 +58,10 @@ public class SurespotLog {
 	}
 
 	public static void e(String tag, Throwable tr, String msg, Object... msgArgs) {
+		String message = null;
 		if (mLogging) {
-			Log.e(tag, String.format(msg, msgArgs), tr);
+			message = String.format(msg, msgArgs);
+			Log.e(tag, message, tr);
 		}
 
 		if (tr instanceof HttpResponseException) {
@@ -71,6 +79,10 @@ public class SurespotLog {
 			}
 		}
 		if (mReport) {
+			if (message == null) {
+				message = String.format(msg, msgArgs);
+			}
+			ACRA.getErrorReporter().putCustomData("message", message);
 			ACRA.getErrorReporter().handleSilentException(tr);
 		}
 
@@ -94,12 +106,7 @@ public class SurespotLog {
 	public static void v(String tag, Throwable tr, String msg, Object... msgArgs) {
 		if (mLogging) {
 			Log.v(tag, String.format(msg, msgArgs), tr);
-		}
-		
-//		if (mReport) {
-//			ACRA.getErrorReporter().handleSilentException(tr);
-//		}
-
+		}	
 	}
 
 	public static boolean isLogging() {
