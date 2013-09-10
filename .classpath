@@ -3,9 +3,9 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="/android-async-http/libs/httpclientandroidlib-1.1.1.madman.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/acra-4.5.0.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/httpclientandroidlib"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
