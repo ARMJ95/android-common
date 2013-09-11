@@ -1,23 +1,17 @@
 package com.twofours.surespot.common;
 
-import org.acra.ACRA;
-
 import android.util.Log;
 import ch.boye.httpclientandroidlib.client.HttpResponseException;
 
 public class SurespotLog {
 	private static boolean mLogging = SurespotConstants.LOGGING;
-	private static boolean mReport = SurespotConstants.CRASH_REPORTING;
 
 	public static void setLogging(boolean logging) {
 		v("SurespotLog", "setting logging to: %b", logging);
 		mLogging = logging;
 	}
 	
-	public static void setCrashReporting(boolean crashReporting) {
-		v("SurespotLog", "setting crashReporting to: %b", crashReporting);
-		mReport = crashReporting;
-	}
+	
 
 	// by using string.format we avoid string concat overhead when logging is disabled
 	public static void w(String tag, String msg, Object... msgArgs) {
@@ -32,14 +26,6 @@ public class SurespotLog {
 			message = String.format(msg, msgArgs);
 			// Log.w(tag, msg +", " + tr.getMessage());
 			Log.w(tag, message, tr);
-		}
-
-		if (mReport) {
-			if (message == null) {
-				message = String.format(msg, msgArgs);	
-			}
-			ACRA.getErrorReporter().putCustomData("message", message);
-			ACRA.getErrorReporter().handleSilentException(tr);
 		}
 	}
 
@@ -77,23 +63,13 @@ public class SurespotLog {
 			case 409:
 				return;
 			}
-		}
-		if (mReport) {
-			if (message == null) {
-				message = String.format(msg, msgArgs);
-			}
-			ACRA.getErrorReporter().putCustomData("message", message);
-			ACRA.getErrorReporter().handleSilentException(tr);
-		}
-
+		}	
 	}
 
 	public static void i(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
 			Log.i(tag, String.format(msg, msgArgs));
-		}
-
-		
+		}		
 	}
 	
 	public static void i(String tag, Throwable tr, String msg, Object... msgArgs) {

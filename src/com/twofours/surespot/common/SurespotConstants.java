@@ -61,8 +61,6 @@ public class SurespotConstants {
 
 	// PROD false for production
 	public final static boolean LOGGING = false;
-	// PROD false for production
-	public final static boolean CRASH_REPORTING = false;
 
 	public class PrefNames {
 		public final static String PREFS_FILE = "surespot_preferences";
