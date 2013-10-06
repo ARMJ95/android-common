@@ -10,20 +10,18 @@ public class SurespotLog {
 		v("SurespotLog", "setting logging to: %b", logging);
 		mLogging = logging;
 	}
-	
-	
 
 	// by using string.format we avoid string concat overhead when logging is disabled
 	public static void w(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
-			Log.w(tag, String.format(msg, msgArgs));
+			Log.w(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 	}
 
 	public static void w(String tag, Throwable tr, String msg, Object... msgArgs) {
 		String message = null;
 		if (mLogging) {
-			message = String.format(msg, msgArgs);
+			message = tag + ": " + String.format(msg, msgArgs);
 			// Log.w(tag, msg +", " + tr.getMessage());
 			Log.w(tag, message, tr);
 		}
@@ -31,14 +29,14 @@ public class SurespotLog {
 
 	public static void v(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
-			Log.v(tag, String.format(msg, msgArgs));
+			Log.v(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 
 	}
 
 	public static void d(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
-			Log.d(tag, String.format(msg, msgArgs));
+			Log.d(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 
 	}
@@ -46,7 +44,7 @@ public class SurespotLog {
 	public static void e(String tag, Throwable tr, String msg, Object... msgArgs) {
 		String message = null;
 		if (mLogging) {
-			message = String.format(msg, msgArgs);
+			message = tag + ": " + String.format(msg, msgArgs);
 			Log.e(tag, message, tr);
 		}
 
@@ -63,26 +61,25 @@ public class SurespotLog {
 			case 409:
 				return;
 			}
-		}	
+		}
 	}
 
 	public static void i(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
-			Log.i(tag, String.format(msg, msgArgs));
-		}		
-	}
-	
-	public static void i(String tag, Throwable tr, String msg, Object... msgArgs) {
-		if (mLogging) {
-			Log.e(tag, String.format(msg, msgArgs), tr);
+			Log.i(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 	}
 
+	public static void i(String tag, Throwable tr, String msg, Object... msgArgs) {
+		if (mLogging) {
+			Log.i(tag, tag + ": " + String.format(msg, msgArgs), tr);
+		}
+	}
 
 	public static void v(String tag, Throwable tr, String msg, Object... msgArgs) {
 		if (mLogging) {
-			Log.v(tag, String.format(msg, msgArgs), tr);
-		}	
+			Log.v(tag, tag + ": " + String.format(msg, msgArgs), tr);
+		}
 	}
 
 	public static boolean isLogging() {
