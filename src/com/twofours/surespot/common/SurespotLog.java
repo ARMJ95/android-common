@@ -14,6 +14,7 @@ public class SurespotLog {
 	// by using string.format we avoid string concat overhead when logging is disabled
 	public static void w(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
+			if (msg == null) msg = "";
 			Log.w(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 	}
@@ -21,6 +22,7 @@ public class SurespotLog {
 	public static void w(String tag, Throwable tr, String msg, Object... msgArgs) {
 		String message = null;
 		if (mLogging) {
+			if (msg == null) msg = "";
 			message = tag + ": " + String.format(msg, msgArgs);
 			// Log.w(tag, msg +", " + tr.getMessage());
 			Log.w(tag, message, tr);
@@ -29,6 +31,7 @@ public class SurespotLog {
 
 	public static void v(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
+			if (msg == null) msg = "";
 			Log.v(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 
@@ -36,6 +39,7 @@ public class SurespotLog {
 
 	public static void d(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
+			if (msg == null) msg = "";
 			Log.d(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 
@@ -44,6 +48,7 @@ public class SurespotLog {
 	public static void e(String tag, Throwable tr, String msg, Object... msgArgs) {
 		String message = null;
 		if (mLogging) {
+			if (msg == null) msg = "";
 			message = tag + ": " + String.format(msg, msgArgs);
 			Log.e(tag, message, tr);
 		}
@@ -66,18 +71,21 @@ public class SurespotLog {
 
 	public static void i(String tag, String msg, Object... msgArgs) {
 		if (mLogging) {
+			if (msg == null) msg = "";
 			Log.i(tag, tag + ": " + String.format(msg, msgArgs));
 		}
 	}
 
 	public static void i(String tag, Throwable tr, String msg, Object... msgArgs) {
 		if (mLogging) {
+			if (msg == null) msg = "";
 			Log.i(tag, tag + ": " + String.format(msg, msgArgs), tr);
 		}
 	}
 
 	public static void v(String tag, Throwable tr, String msg, Object... msgArgs) {
 		if (mLogging) {
+			if (msg == null) msg = "";
 			Log.v(tag, tag + ": " + String.format(msg, msgArgs), tr);
 		}
 	}
