@@ -97,7 +97,9 @@ public class SurespotConstants {
 		public final static int REQUEST_GOOGLE_AUTH = 13;
 		public final static int SYSTEM_NOTIFICATION = 14;
 		public final static int PURCHASE = 15;
+		public final static int BACKGROUND_CACHE_NOTIFICATION = 16;
 	}
+	
 	
 	public class Products {
 		public final static String PWYL_PREFIX = "pwyl_";
