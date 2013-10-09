@@ -9,6 +9,7 @@ import javax.net.ssl.X509TrustManager;
 
 import android.net.SSLCertificateSocketFactory;
 import ch.boye.httpclientandroidlib.conn.ClientConnectionManager;
+import ch.boye.httpclientandroidlib.conn.scheme.PlainSocketFactory;
 import ch.boye.httpclientandroidlib.conn.scheme.Scheme;
 import ch.boye.httpclientandroidlib.conn.scheme.SchemeRegistry;
 import ch.boye.httpclientandroidlib.conn.ssl.SSLSocketFactory;
@@ -32,6 +33,7 @@ public class WebClientDevWrapper {
 		ClientConnectionManager ccm = base.getConnectionManager();
 		SchemeRegistry sr = ccm.getSchemeRegistry();
 		sr.register(new Scheme("https", ssf, 443));
+		sr.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 8080));
 	}
 
 	public static javax.net.SocketFactory getWebSocketFactory() {
