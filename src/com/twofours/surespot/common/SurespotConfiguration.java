@@ -20,6 +20,8 @@ public class SurespotConfiguration {
 
 	private static int mImageDisplayHeight;
 	private static int mQRDisplaySize;
+	
+	private static boolean mBackgroundImageSet;
 
 	public static void LoadConfigProperties(Context context) {
 		// Read from the /res/raw directory
@@ -70,5 +72,12 @@ public class SurespotConfiguration {
 	public static int getQRDisplaySize() {
 		return mQRDisplaySize;
 	}
-
+	
+	public static void setBackgroundImageSet(boolean set) {
+		mBackgroundImageSet = set;
+	}
+	
+	public static boolean isBackgroundImageSet() {
+		return mBackgroundImageSet;
+	}	
 }
