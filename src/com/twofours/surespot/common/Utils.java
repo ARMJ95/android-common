@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -26,6 +27,7 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
@@ -263,13 +265,13 @@ public class Utils {
 			navView.setVisibility(View.VISIBLE);
 			separatorView.setVisibility(View.VISIBLE);
 			navView.setText(leftText);
+			userView.setGravity(Gravity.CENTER_VERTICAL);
 		}
 		else {
 			navView.setVisibility(View.GONE);
 			separatorView.setVisibility(View.GONE);
-			navView.setText("");
-			LayoutParams params = (LayoutParams) userView.getLayoutParams();
-			params.setMargins(5, 0, 0, 0);
+			navView.setText("");			
+			userView.setGravity(Gravity.CENTER);
 		}
 		userView.setText(rightText);
 	}
@@ -283,13 +285,13 @@ public class Utils {
 			navView.setVisibility(View.VISIBLE);
 			separatorView.setVisibility(View.VISIBLE);
 			navView.setText(leftText);
+			userView.setGravity(Gravity.CENTER_VERTICAL);
 		}
 		else {
 			navView.setVisibility(View.GONE);
 			separatorView.setVisibility(View.GONE);
-			navView.setText("");
-			LayoutParams params = (LayoutParams) userView.getLayoutParams();
-			params.setMargins(5, 0, 0, 0);
+			navView.setText("");			
+			userView.setGravity(Gravity.CENTER);
 		}
 		userView.setText(rightText);
 	}
@@ -303,13 +305,13 @@ public class Utils {
 			navView.setVisibility(View.VISIBLE);
 			separatorView.setVisibility(View.VISIBLE);
 			navView.setText(leftText);
+			userView.setGravity(Gravity.CENTER_VERTICAL);
 		}
 		else {
 			navView.setVisibility(View.GONE);
 			separatorView.setVisibility(View.GONE);
-			navView.setText("");
-			LayoutParams params = (LayoutParams) userView.getLayoutParams();
-			params.setMargins(5, 0, 0, 0);
+			navView.setText("");			
+			userView.setGravity(Gravity.CENTER);
 		}
 		userView.setText(rightText);
 	}
