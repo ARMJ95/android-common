@@ -30,7 +30,7 @@ import android.util.Patterns;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -266,12 +266,18 @@ public class Utils {
 			separatorView.setVisibility(View.VISIBLE);
 			navView.setText(leftText);
 			userView.setGravity(Gravity.CENTER_VERTICAL);
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(0, 0, 0, 0);
+			userView.setLayoutParams(params);
 		}
 		else {
 			navView.setVisibility(View.GONE);
 			separatorView.setVisibility(View.GONE);
-			navView.setText("");			
+			navView.setText("");
 			userView.setGravity(Gravity.CENTER);
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(7, 0, 0, 0);
+			userView.setLayoutParams(params);
 		}
 		userView.setText(rightText);
 	}
@@ -286,12 +292,18 @@ public class Utils {
 			separatorView.setVisibility(View.VISIBLE);
 			navView.setText(leftText);
 			userView.setGravity(Gravity.CENTER_VERTICAL);
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(0, 0, 0, 0);
+			userView.setLayoutParams(params);
 		}
 		else {
 			navView.setVisibility(View.GONE);
 			separatorView.setVisibility(View.GONE);
-			navView.setText("");			
+			navView.setText("");
 			userView.setGravity(Gravity.CENTER);
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(7, 0, 0, 0);
+			userView.setLayoutParams(params);
 		}
 		userView.setText(rightText);
 	}
@@ -306,12 +318,18 @@ public class Utils {
 			separatorView.setVisibility(View.VISIBLE);
 			navView.setText(leftText);
 			userView.setGravity(Gravity.CENTER_VERTICAL);
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(0, 0, 0, 0);
+			userView.setLayoutParams(params);
 		}
 		else {
 			navView.setVisibility(View.GONE);
 			separatorView.setVisibility(View.GONE);
-			navView.setText("");			
+			navView.setText("");
 			userView.setGravity(Gravity.CENTER);
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(7, 0, 0, 0);
+			userView.setLayoutParams(params);
 		}
 		userView.setText(rightText);
 	}
