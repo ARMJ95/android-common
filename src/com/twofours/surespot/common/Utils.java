@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,8 +60,7 @@ public class Utils {
 		return total.toString();
 	}
 
-	public static byte[] inputStreamToBytes(InputStream inputStream)
-			throws IOException {
+	public static byte[] inputStreamToBytes(InputStream inputStream) throws IOException {
 		ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 		int bufferSize = 1024;
 		byte[] buffer = new byte[bufferSize];
@@ -106,21 +106,17 @@ public class Utils {
 	}
 
 	public static String getSharedPrefsString(Context context, String key) {
-		SharedPreferences settings = context.getSharedPreferences(
-				SurespotConstants.PrefNames.PREFS_FILE,
-				android.content.Context.MODE_PRIVATE);
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
 		return settings.getString(key, null);
 	}
 
-	public static void putSharedPrefsString(Context context, String key,
-			String value) {
-		SharedPreferences settings = context.getSharedPreferences(
-				SurespotConstants.PrefNames.PREFS_FILE,
-				android.content.Context.MODE_PRIVATE);
+	public static void putSharedPrefsString(Context context, String key, String value) {
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
 		Editor editor = settings.edit();
 		if (value == null) {
 			editor.remove(key);
-		} else {
+		}
+		else {
 			editor.putString(key, value);
 		}
 		editor.commit();
@@ -140,15 +136,15 @@ public class Utils {
 
 			return outMap;
 
-		} catch (JSONException e) {
+		}
+		catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonToMap", e);
 		}
 		return null;
 
 	}
 
-	public static HashMap<String, Boolean> jsonBooleanToMap(
-			JSONObject jsonObject) {
+	public static HashMap<String, Boolean> jsonBooleanToMap(JSONObject jsonObject) {
 		try {
 			HashMap<String, Boolean> outMap = new HashMap<String, Boolean>();
 
@@ -161,21 +157,22 @@ public class Utils {
 
 			return outMap;
 
-		} catch (JSONException e) {
+		}
+		catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonToMap", e);
 		}
 		return null;
 
 	}
 
-	public static HashMap<String, Boolean> jsonStringToBooleanMap(
-			String jsonString) {
+	public static HashMap<String, Boolean> jsonStringToBooleanMap(String jsonString) {
 
 		JSONObject jsonObject;
 		try {
 			jsonObject = new JSONObject(jsonString);
 			return jsonBooleanToMap(jsonObject);
-		} catch (JSONException e) {
+		}
+		catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonStringToMap", e);
 		}
 
@@ -189,7 +186,8 @@ public class Utils {
 		try {
 			jsonObject = new JSONObject(jsonString);
 			return jsonToMap(jsonObject);
-		} catch (JSONException e) {
+		}
+		catch (JSONException e) {
 			SurespotLog.w(TAG, "jsonStringToMap", e);
 		}
 
@@ -200,8 +198,7 @@ public class Utils {
 	public static String md5(String s) {
 		try {
 			// Create MD5 Hash
-			MessageDigest digest = java.security.MessageDigest
-					.getInstance("MD5");
+			MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
 			digest.update(s.getBytes());
 			byte[] messageDigest = digest.digest();
 
@@ -211,78 +208,109 @@ public class Utils {
 				hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
 			return hexString.toString();
 
-		} catch (NoSuchAlgorithmException e) {
+		}
+		catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 		return "";
 	}
 
 	/**
-	 * Configure the title bar the way we want it. Would be nice if sherlock
-	 * would give us an interface.
+	 * Configure the title bar the way we want it. Would be nice if sherlock would give us an interface.
 	 * 
 	 * @param activity
 	 * @param leftText
 	 * @param rightText
 	 */
-	public static void configureActionBar(SherlockFragmentActivity activity,
-			String leftText, String rightText, boolean home) {
+	public static void configureActionBar(SherlockFragmentActivity activity, String leftText, String rightText, boolean home) {
 		final ActionBar actionBar = activity.getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(home);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setDisplayShowTitleEnabled(false);
-		View customNav = LayoutInflater.from(activity).inflate(
-				R.layout.actionbar_title, null);
+		View customNav = LayoutInflater.from(activity).inflate(R.layout.actionbar_title, null);
 		actionBar.setCustomView(customNav);
 		setActionBarTitles(activity, leftText, rightText);
 
 	}
 
-	public static void setActionBarTitles(SherlockFragmentActivity activity,
-			String leftText, String rightText) {
+	public static void configureActionBar(SherlockActivity activity, String leftText, String rightText, boolean home) {
+		final ActionBar actionBar = activity.getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(home);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		View customNav = LayoutInflater.from(activity).inflate(R.layout.actionbar_title, null);
+		actionBar.setCustomView(customNav);
+		setActionBarTitles(activity, leftText, rightText);
+	}
+
+	public static void configureActionBar(SherlockPreferenceActivity activity, String leftText, String rightText, boolean home) {
+		final ActionBar actionBar = activity.getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(home);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		View customNav = LayoutInflater.from(activity).inflate(R.layout.actionbar_title, null);
+		actionBar.setCustomView(customNav);
+		setActionBarTitles(activity, leftText, rightText);
+	}
+
+	// code for these should be identical
+	public static void setActionBarTitles(SherlockFragmentActivity activity, String leftText, String rightText) {
 		TextView navView = (TextView) activity.findViewById(R.id.nav);
+		TextView separatorView = (TextView) activity.findViewById(R.id.separator);
 		TextView userView = (TextView) activity.findViewById(R.id.user);
-		navView.setText(leftText);
+
+		if (leftText != null && leftText.length() > 0) {
+			navView.setVisibility(View.VISIBLE);
+			separatorView.setVisibility(View.VISIBLE);
+			navView.setText(leftText);
+		}
+		else {
+			navView.setVisibility(View.GONE);
+			separatorView.setVisibility(View.GONE);
+			navView.setText("");
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(5, 0, 0, 0);
+		}
 		userView.setText(rightText);
 	}
 
-	public static void configureActionBar(SherlockActivity activity,
-			String leftText, String rightText, boolean home) {
-		final ActionBar actionBar = activity.getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(home);
-		actionBar.setDisplayShowCustomEnabled(true);
-		actionBar.setDisplayShowTitleEnabled(false);
-		View customNav = LayoutInflater.from(activity).inflate(
-				R.layout.actionbar_title, null);
-		actionBar.setCustomView(customNav);
-		setActionBarTitles(activity, leftText, rightText);
-	}
-
-	public static void setActionBarTitles(SherlockActivity activity,
-			String leftText, String rightText) {
+	public static void setActionBarTitles(SherlockActivity activity, String leftText, String rightText) {
 		TextView navView = (TextView) activity.findViewById(R.id.nav);
+		TextView separatorView = (TextView) activity.findViewById(R.id.separator);
 		TextView userView = (TextView) activity.findViewById(R.id.user);
-		navView.setText(leftText);
+
+		if (leftText != null && leftText.length() > 0) {
+			navView.setVisibility(View.VISIBLE);
+			separatorView.setVisibility(View.VISIBLE);
+			navView.setText(leftText);
+		}
+		else {
+			navView.setVisibility(View.GONE);
+			separatorView.setVisibility(View.GONE);
+			navView.setText("");
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(5, 0, 0, 0);
+		}
 		userView.setText(rightText);
 	}
 
-	public static void configureActionBar(SherlockPreferenceActivity activity,
-			String leftText, String rightText, boolean home) {
-		final ActionBar actionBar = activity.getSupportActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(home);
-		actionBar.setDisplayShowCustomEnabled(true);
-		actionBar.setDisplayShowTitleEnabled(false);
-		View customNav = LayoutInflater.from(activity).inflate(
-				R.layout.actionbar_title, null);
-		actionBar.setCustomView(customNav);
-		setActionBarTitles(activity, leftText, rightText);
-	}
-
-	public static void setActionBarTitles(SherlockPreferenceActivity activity,
-			String leftText, String rightText) {
+	public static void setActionBarTitles(SherlockPreferenceActivity activity, String leftText, String rightText) {
 		TextView navView = (TextView) activity.findViewById(R.id.nav);
+		TextView separatorView = (TextView) activity.findViewById(R.id.separator);
 		TextView userView = (TextView) activity.findViewById(R.id.user);
-		navView.setText(leftText);
+
+		if (leftText != null && leftText.length() > 0) {
+			navView.setVisibility(View.VISIBLE);
+			separatorView.setVisibility(View.VISIBLE);
+			navView.setText(leftText);
+		}
+		else {
+			navView.setVisibility(View.GONE);
+			separatorView.setVisibility(View.GONE);
+			navView.setText("");
+			LayoutParams params = (LayoutParams) userView.getLayoutParams();
+			params.setMargins(5, 0, 0, 0);
+		}
 		userView.setText(rightText);
 	}
 
@@ -298,13 +326,11 @@ public class Utils {
 			SurespotLog.v(tag, "Intent action: %s", action);
 			SurespotLog.v(tag, "Intent type: %s", type);
 
-			SurespotLog.v(tag, "Intent categories: "
-					+ (categories == null ? "null" : categories.toString()));
+			SurespotLog.v(tag, "Intent categories: " + (categories == null ? "null" : categories.toString()));
 
 			if (extras != null) {
 				for (String extra : extras.keySet()) {
-					SurespotLog.v(tag, "Intent extra, key: %s, value: %s",
-							extra, extras.get(extra));
+					SurespotLog.v(tag, "Intent extra, key: %s, value: %s", extra, extras.get(extra));
 				}
 			}
 		}
@@ -324,12 +350,11 @@ public class Utils {
 	}
 
 	public static String getResourceString(Context context, String name) {
-		int nameResourceID = context.getResources().getIdentifier(name,
-				"string", context.getApplicationInfo().packageName);
+		int nameResourceID = context.getResources().getIdentifier(name, "string", context.getApplicationInfo().packageName);
 		if (nameResourceID == 0) {
-			throw new IllegalArgumentException(
-					"No resource string found with name " + name);
-		} else {
+			throw new IllegalArgumentException("No resource string found with name " + name);
+		}
+		else {
 			return context.getString(nameResourceID);
 		}
 	}
