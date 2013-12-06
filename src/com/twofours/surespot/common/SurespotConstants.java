@@ -69,6 +69,7 @@ public class SurespotConstants {
 		public static final String LAST_USER = "last_user";
 		public static final String LAST_CHAT = "last_chat";
 		public static final String REFERRERS = "referrers";
+		public static final String APP_VERSION = "app_version";
 	}
 
 	public class MimeTypes {
