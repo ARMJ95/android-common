@@ -89,6 +89,8 @@ public class Utils {
 	}
 
 	public static void makeToast(Context context, String toast) {
+		if (context == null) return;
+		
 		if (mToast == null) {
 			mToast = Toast.makeText(context, toast, Toast.LENGTH_SHORT);
 		}
@@ -99,6 +101,8 @@ public class Utils {
 	}
 
 	public static void makeLongToast(Context context, String toast) {
+		if (context == null) return;
+		
 		if (mToast == null) {
 			mToast = Toast.makeText(context, toast, Toast.LENGTH_LONG);
 		}
