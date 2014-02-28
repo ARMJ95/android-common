@@ -89,8 +89,9 @@ public class Utils {
 	}
 
 	public static void makeToast(Context context, String toast) {
-		if (context == null) return;
-		
+		if (context == null)
+			return;
+
 		if (mToast == null) {
 			mToast = Toast.makeText(context, toast, Toast.LENGTH_SHORT);
 		}
@@ -101,8 +102,9 @@ public class Utils {
 	}
 
 	public static void makeLongToast(Context context, String toast) {
-		if (context == null) return;
-		
+		if (context == null)
+			return;
+
 		if (mToast == null) {
 			mToast = Toast.makeText(context, toast, Toast.LENGTH_LONG);
 		}
@@ -127,6 +129,30 @@ public class Utils {
 		}
 		editor.commit();
 
+	}
+
+	public static boolean getSharedPrefsBoolean(Context context, String key) {
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
+		return settings.getBoolean(key, false);
+	}
+
+	public static void putSharedPrefsBoolean(Context context, String key, boolean value) {
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
+		Editor editor = settings.edit();
+
+		editor.putBoolean(key, value);
+		editor.commit();
+	}
+	
+	public static void removePref(Context context, String key) {
+		SharedPreferences settings = context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
+		Editor editor = settings.edit();		
+		editor.remove(key);		
+		editor.commit();
+	}
+	
+	public static SharedPreferences getGlobalSharedPrefs(Context context) {
+		return context.getSharedPreferences(SurespotConstants.PrefNames.PREFS_FILE, android.content.Context.MODE_PRIVATE);
 	}
 
 	public static HashMap<String, Integer> jsonToMap(JSONObject jsonObject) {

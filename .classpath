@@ -8,5 +8,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/httpclientandroidlib"/>
+	<classpathentry exported="true" kind="lib" path="/home/adam/dev/surespot/libs/android/common/libs/sc-light-jdk15on-1.47.0.4-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/adam/dev/surespot/libs/android/common/libs/scprov-jdk15on-1.47.0.4-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
