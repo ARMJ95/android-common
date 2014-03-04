@@ -23,6 +23,7 @@ public class FileUtils {
 	private final static String HTTP = "http";
 	public final static String IDENTITIES_DIR = "identities";
 	private final static String PUBLICKEYS_DIR = "publicKeys";
+	private final static String SECRETS_DIR = "secrets";
 	private static final String TAG = "FileUtils";
 
 	public static File getHttpCacheDir(Context context) {
@@ -107,6 +108,10 @@ public class FileUtils {
 
 	public static String getStateDir(Context context) {
 		return context.getFilesDir().getPath() + File.separator + STATE_DIR;
+	}
+	
+	public static String getSecretsDir(Context context) {
+		return context.getFilesDir().getPath() + File.separator + IDENTITIES_DIR;
 	}
 
 	public static void wipeImageCaptureDir(Context context) {

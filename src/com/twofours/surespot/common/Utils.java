@@ -365,7 +365,7 @@ public class Utils {
 	}
 
 	public static void logIntent(String tag, Intent intent) {
-		if (SurespotLog.isLogging()) {
+		if (intent != null && SurespotLog.isLogging()) {			
 			Uri uri = intent.getData();
 			String action = intent.getAction();
 			String type = intent.getType();

@@ -17,7 +17,7 @@ public class SurespotConstants {
 	public static final String GOOGLE_APP_LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAytYzwMl/RLFQWotcjazzM/xbgqU/UCMEjBJ3QgRG2aT0B0+LCaEkq4bL1FnDvXxUmKOAfGnhn7zbFMfgrfTOOvTuioKgspLE2RLryl9K9MnAxBn2rxBv45gG2E+K97gs7qqrxfrAUTTZPfq8McXVLc3k9WWOf/pfiH25WL7ijig3CNkzJ+BP1u2KQiFltsdln7q+9tMddUWUxd8zP6c0hmCIB9DYLutfqmel0ckjfEPAhTKqsOIpryzcGLZCs2C22Qg0AllQ62ohidEIFdA0SYKp0CjO9E5NO1pM+ZnBlf/cmdEwlhuYyh26rUcZj342fNhWzwiiHIeiiedvXOOS8wIDAQAB";
 
 	// PROD
-	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_PROD;
+	public static final String SERVER_PUBLIC_KEY = SERVER_PUBLIC_KEY_LOCAL;
 
 	public class IntentFilters {
 		public static final String INVITE_REQUEST = "invite_request_intent";
@@ -57,10 +57,10 @@ public class SurespotConstants {
 	
 
 	// PROD set to 3
-	public final static int MAX_IDENTITIES = 3;
+	public final static int MAX_IDENTITIES = 30;
 
 	// PROD false for production
-	public final static boolean LOGGING = false;
+	public final static boolean LOGGING = true;
 
 	public class PrefNames {
 		public final static String PREFS_FILE = "surespot_preferences";
@@ -70,6 +70,7 @@ public class SurespotConstants {
 		public static final String LAST_CHAT = "last_chat";
 		public static final String REFERRERS = "referrers";
 		public static final String APP_VERSION = "app_version";
+		public static final String KEYSTORE_ENABLED = "pref_enable_keystore";
 	}
 
 	public class MimeTypes {
