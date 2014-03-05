@@ -23,7 +23,6 @@ public class FileUtils {
 	private final static String HTTP = "http";
 	public final static String IDENTITIES_DIR = "identities";
 	private final static String PUBLICKEYS_DIR = "publicKeys";
-	private final static String SECRETS_DIR = "secrets";
 	private static final String TAG = "FileUtils";
 
 	public static File getHttpCacheDir(Context context) {
@@ -68,7 +67,8 @@ public class FileUtils {
 			if (fCacheDir != null) {
 				cacheDir = fCacheDir.getPath();
 			}
-		} else {
+		}
+		else {
 
 			String baseDir = Environment.getExternalStorageDirectory().getPath();
 			cacheDir = baseDir + "/Android/data/com.twofours.surespot/cache/";
@@ -109,10 +109,6 @@ public class FileUtils {
 	public static String getStateDir(Context context) {
 		return context.getFilesDir().getPath() + File.separator + STATE_DIR;
 	}
-	
-	public static String getSecretsDir(Context context) {
-		return context.getFilesDir().getPath() + File.separator + IDENTITIES_DIR;
-	}
 
 	public static void wipeImageCaptureDir(Context context) {
 		File dir = getImageCaptureDir(context);
@@ -137,7 +133,8 @@ public class FileUtils {
 			// file.setWritable(true, false);
 			// SurespotLog.v(TAG, "createdFile: " + file.getPath());
 			return file;
-		} else {
+		}
+		else {
 			throw new IOException("Could not create image temp file dir: " + dir.getPath());
 		}
 
@@ -151,7 +148,8 @@ public class FileUtils {
 		File imageDir;
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
 			imageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "surespot");
-		} else {
+		}
+		else {
 			imageDir = new File(Environment.getExternalStorageDirectory().getPath() + "/Pictures/surespot");
 
 		}
@@ -205,18 +203,18 @@ public class FileUtils {
 		byte[] input = Utils.inputStreamToBytes(zis);
 		return input;
 	}
-	
+
 	public static byte[] readFileNoGzip(String filename) throws IOException {
 		FileInputStream fis = new FileInputStream(filename);
 		byte[] input = Utils.inputStreamToBytes(fis);
 		return input;
 	}
 
-
 	public static boolean isGzipCompressed(byte[] bytes) {
 		if ((bytes == null) || (bytes.length < 2)) {
 			return false;
-		} else {
+		}
+		else {
 			return ((bytes[0] == (byte) (GZIPInputStream.GZIP_MAGIC)) && (bytes[1] == (byte) (GZIPInputStream.GZIP_MAGIC >> 8)));
 		}
 	}
@@ -230,11 +228,13 @@ public class FileUtils {
 			try {
 				GZIPInputStream gzin = new GZIPInputStream(in);
 				return Utils.inputStreamToBytes(gzin);
-			} catch (IOException e) {
+			}
+			catch (IOException e) {
 				SurespotLog.w(TAG, e, "error gunzipping identity");
 			}
 
-		} else {
+		}
+		else {
 			SurespotLog.v(TAG, "not gzipped, not gunzipping");
 		}
 		return identityBytes;
